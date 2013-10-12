@@ -6,7 +6,7 @@ function Game() {
 	this.gameVars = []; //{name,value}
 }
 								//"set"/"get", varName, variable value
-GameController.prototype.vars = function(mode, varName, value) {
+Game.prototype.vars = function(mode, varName, value) {
 	var arrElement = null;
 	var iii = 0;
 	for(iii=0; iii<this.gameVars.length; iii++) {
@@ -24,14 +24,19 @@ GameController.prototype.vars = function(mode, varName, value) {
 				this.gameVars.push({"name": varName, "value": value});
 		break;
 		case "get":
-			return arrElement["value"];
+			if(arrElement != null)
+				return arrElement["value"];
+			break;
+		case "remove":
+			if(arrElement != null)
+				this.gameVars.splice(iii,1);
 			break;
 		default:
 			return null;
 	}
 };
 
-GameController.prototype.events = function(mode, eventName, eventPanel) {
+Game.prototype.events = function(mode, eventName, eventPanel) {
 	var arrElement = null;
 	var iii = 0;
 	for(iii=0; iii<this.eventPanels.length; iii++) {
@@ -52,7 +57,12 @@ GameController.prototype.events = function(mode, eventName, eventPanel) {
 				this.eventPanels.push({"name": eventName, "event": eventPanel});
 		break;
 		case "get":
-			return arrElement["event"];
+			if(arrElement != null)
+				return arrElement["event"];
+			break;
+		case "remove":
+			if(arrElement != null)
+				this.eventPanels.splice(iii,1);
 			break;
 		default:
 			return null;
