@@ -1,12 +1,59 @@
+/*
+  HTML Tag overides
+*/
 body {
 	background-color: #000;
 	color: #eee;
-	font-family: arial, verdana, sans-serif;
+	font-family: helvetica, arial, verdana, sans-serif;
 	height: 100%;
 	padding: 0px;
 	margin: 0px;
 }
 
+input, select, textarea{
+    color: #fff;
+}
+
+textarea:focus, input:focus {
+    color: #fff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: block;
+  -moz-transition: all .4s ease-in;
+  -o-transition: all .4s ease-in;
+  -webkit-transition: all .4s ease-in;
+}
+
+li:hover {
+  color: #cc0000;
+}
+
+h2.header {
+	text-align: center;
+  padding-top: 20px;
+}
+
+
+/* 
+  Classes 
+*/
+.centerContent {
+  background-color: #000;
+/*  padding-right: 10px; */
+  padding-left: 20px;
+	/*border: 1px dotted #fff;*/
+}
+
+
+/*
+  IDs
+*/
 #container {
 	background-color: #333;
 	height: 100%;
@@ -14,36 +61,15 @@ body {
 	width: 1000px;
 }
 
-hr {
-	width: 80%;
-}
-
-h2.header {
-	text-align: center;
-}
-
-.centerContent {
-	background-color: #000;
-	padding-right: 10px;
-	padding-left: 10px;
-	border: 1px dotted #fff;
-}
-
-#textArea {
-	display: inline-block;
-	background-color: #aaa;
-	margin: 0px;
-	height: 100%;
-}
-
-#inventory {
-	display: inline-block;
-	background-color: #ccc;
-	margin: 0px;
+#indent {
+  text-indent: 1em;
 }
 
 #inputField {
 	display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 #inputField input {
@@ -53,6 +79,28 @@ h2.header {
 	background-color: #555;
 	padding:5px 0px 5px 5px;
 }
+
+#inventory {
+	display: inline-block;
+	background-color: #333333;
+	margin: 0px;
+  float: right;
+  width: 120px;
+}
+
+#textArea {
+	display: inline-block;
+	/*background-color: #aaa;*/
+	margin: 0px;
+  padding-top: 20px;
+	height: 100%;
+  height: 300px;
+}
+
+
+/*
+  Cross Browser Stuff
+*/
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #ccc;
 }
