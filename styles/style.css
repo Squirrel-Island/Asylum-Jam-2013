@@ -29,7 +29,8 @@ li {
 }
 
 li:hover {
-  color: #cc0000;
+  color: #739191;
+  cursor: pointer;
 }
 
 textarea:focus, input:focus {
@@ -84,7 +85,7 @@ ul {
 
 #inventory {
 	display: inline-block;
-	background-color: #333333;
+	/*background-color: #333333;*/
 	margin: 0px;
   float: right;
   width: 120px;
