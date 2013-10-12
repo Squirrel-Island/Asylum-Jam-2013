@@ -1,0 +1,65 @@
+Items:
+Key to Gate - Shed
+Book of Matches -Original Pocket
+Wallet -Original Pocket
+Cigarettes - IDK
+
+Scale FOV with map and nothing should over lap.
+
+
+Possible Places:
+
+Fountain
+	Prompt: Drink water (y/n)
+		Possibilities:
+			y - die
+			n -live
+Playground
+	prompt investigate: swings or teetertotter
+		Possibilities:
+			swings -death
+			teetertotter - death
+			ignore - live
+Dog
+	prompt: barking is heard, run or keep at normal pace
+		Possibilites:
+			death from not running - eats face
+			run away - live
+
+Poppy Field
+	prompt: walking through poppy field, start to feel sleepy.
+		Possibilities:
+			continue to walk -sleep and die
+			turn around - live
+Pond
+	prompt: you see lights across the pond, go to the waters edge to investigate?
+		Possibilities:
+			Go to waters edge: fall in and drown or grabbed a tenticle and drown
+
+Mud 
+	prompt: you notice you have are starting to walk through mud, continue through mud or turn around
+		Possibilities:
+			continue through the mud and suffocate
+			turn around live, but be unable to run for x amount of steps
+Tree
+	prompt: you see something shiny in a tree. investigate/climb?
+		Possibilities:
+			Climb -Fall and die, but the object falls with you
+			ignore- live, but can't get object.
+
+Matienece Shed
+	prompt:	you see the landscapers shed. there could be useful objects inside. investigate? (Y/n)
+		Posibilities:
+			Y- enter shed. You see a key on the top shelf, with a lot of precariously placed sharp tools below. get key? 
+				Y- you grab the key off the shelf but at the dame time knock on of the tools off and skewer yourself. -death
+				N- Live, but you make a note that the key looks pretty important.
+			N- Ignore shed live, but make a note shed looks pretty important.
+
+Exit Gate
+	prompt you see a gate in the distance. investigate?
+		Possibilities:
+			Y- On further inspection the gate is locked. 
+			prompt: If key is in inventory, use key else try to break lock, no good, going to need key
+			N- I guess youll have to find another exit.
+
+Deaths: For each death, it would add an interaction to the place, so I guess death would be a boolean value of Place? 
