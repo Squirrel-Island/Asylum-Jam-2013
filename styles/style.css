@@ -2,7 +2,9 @@
   HTML Tag overides
 */
 body {
-	background-color: #000;
+/*  background-color: #000;*/
+  background-image: url('../images/forest.jpg');
+  background-repeat:no-repeat;
 	color: #eee;
 	font-family: helvetica, arial, verdana, sans-serif;
 	height: 100%;
@@ -11,17 +13,13 @@ body {
   margin-top: -20px;
 }
 
-input, select, textarea{
-    color: #fff;
+h2.header {
+	text-align: center;
+  padding-top: 20px;
 }
 
-textarea:focus, input:focus {
+input, select, textarea {
     color: #fff;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
 }
 
 li {
@@ -35,9 +33,13 @@ li:hover {
   color: #cc0000;
 }
 
-h2.header {
-	text-align: center;
-  padding-top: 20px;
+textarea:focus, input:focus {
+    color: #fff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 
@@ -45,10 +47,10 @@ h2.header {
   Classes 
 */
 .centerContent {
-  background-color: #000;
-/*  padding-right: 10px; */
-  padding-left: 20px;
-	/*border: 1px dotted #fff;*/
+    padding-left: 20px;
+/*  background-color: #000;
+    padding-right: 10px;
+    border: 1px dotted #fff; */
 }
 
 
@@ -56,7 +58,7 @@ h2.header {
   IDs
 */
 #container {
-	background-color: #333;
+/*  background-color: #333;*/
 	height: 100%;
 	margin: 0 auto;
 	width: 1000px;
