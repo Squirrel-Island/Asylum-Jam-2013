@@ -2,8 +2,7 @@
   HTML Tag overides
 */
 body {
-/*  background-color: #000;*/
-  background-image: url('../images/forest.png');
+  background: #000 url('../images/forest.png');
   background-repeat:no-repeat;
 	color: #eee;
 	font-family: helvetica, arial, verdana, sans-serif;
