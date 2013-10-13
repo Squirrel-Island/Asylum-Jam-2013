@@ -29,6 +29,7 @@ Player.prototype.items = function(mode,item,action) {
 				this.inventory[iii] = {"item": item, "action": action};
 			else
 				this.inventory.push({"item": item, "action": action});
+			updateInventory(this.inventory);
 		break;
 		case "get":
 			if(arrElement != null)
@@ -37,6 +38,7 @@ Player.prototype.items = function(mode,item,action) {
 		case "remove":
 			if(arrElement != null)
 				this.inventory.splice(iii,1);
+			updateInventory(this.inventory);
 			break;
 		default:
 			return null;

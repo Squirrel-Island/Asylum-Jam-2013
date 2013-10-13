@@ -24,7 +24,7 @@ function updateMessages(message) {
 
 function updateInteractions(arr) {
   // Get a reference to the interactions element
-  var updateArea = document.getElementById('inputField');
+  var updateArea = document.getElementById('interactions');
   updateArea.innerHTML = "";
 
   // v is equal to the currently iterated property
@@ -52,15 +52,33 @@ function updateInteractions(arr) {
   }
 }
 
-function updateInventory(array) {
-  // Baseline check for null parameters
-  if (array != null) {
-    // Get a reference to the elementID element (.inventory or .inputField)
-    var updateArea = document.getElementById(elementID);
+function updateInventory(arr) {
+  var arr = window.gameController.gameState.player.inventory;
+  // Get a reference to the interactions element
+  var updateArea = document.getElementById('inventoryList');
+  updateArea.innerHTML = "";
 
-    for (var v in array) {
-      //v is equal to the currently iterated property
+  // v is equal to the currently iterated property
+  for (var iii = 0; iii < arr.length; iii++) {
+    // Grab info from array
+    var name = arr[iii]["item"];
+    var action = arr[iii]["action"];
 
-    }
+    // Create a new interactions element
+    var newElement = document.createElement("li");
+    // Create text for element
+    var text = document.createTextNode(name);
+    // Create full update element with text
+    newElement.appendChild(text);
+
+    // Set class for interactions element to animated fadeInDown
+    newElement.setAttribute("class", "animated fadeInDown");
+
+    // Set onclick action for interactions element
+    //newElement.setAttribute("onclick", action);
+    newElement.onclick = action;
+
+    // Append list element
+    updateArea.appendChild(newElement);
   }
 }
