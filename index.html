@@ -4,6 +4,8 @@
 <meta charset="utf-8" />
 <title>Asylum Jam Horror Game - Sonny Jim</title>
 <link rel="stylesheet" href="styles/style.css" />
+<link rel="stylesheet" href="vendor/animate.css/animate.css"/>
+<script type="text/javascript" src="scripts/interfaceUpdate.js"></script>
 <script type="text/javascript" src="scripts/EventPanel.js"></script>
 <script type="text/javascript" src="scripts/Player.js"></script>
 <script type="text/javascript" src="scripts/Game.js"></script>
@@ -43,5 +45,37 @@ window.gameController.gameState.events('set','testPanel',panel);
 window.gameController.gameState.events('set','testPanel2',panel2);
 window.gameController.gameState.player.fieldOfView = 2;
 </script>
+
+<div id="container">
+	<h2 class="header">Asylum Jam - Sonny Jim</h2>
+	<div id="game">
+		<div class="centerContent">
+			<div id="textArea">
+
+        <p class="animated fadeInDown">
+          You're in a bloody park. A giant dog named Sonny Jim just dove out of a tree and ripped your face off.
+        </p>
+          
+      </div>
+			<div id="inventory">
+        		<h4 class="indent">Inventory</h4>
+				<ul class="indent">
+					<li>Key</li>
+					<li>Wallet</li>
+					<li>Matches</li>
+				</ul>
+			</div>
+		</div>
+		<div id="inputField">
+			<ul>
+				<li class="interface" onclick="updateMessages('I am an update')">Add Update</li>
+				<span>|</span>
+				<li class="interface" onclick="updateMessages('I am another update')">Add Another Update</li>
+				<span>|</span>
+				<li class="interface" onclick="updateMessages('I am a third update')">Add A Third Update</li>
+			</ul>
+			<!-- <input name="textPrompt" id="textPrompt" placeholder="Enter your command here..."> -->
+		</div>
+</div>
 </body>
 </html>
