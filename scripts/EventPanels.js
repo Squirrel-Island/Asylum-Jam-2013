@@ -1,5 +1,6 @@
 /* List of Event Panels
-* fountainDeath, Fountain, playgroundTeeterTotterDeath, playgroundSwingSetDeath, Playground, DogDeath, Dog
+* fountainDeath, Fountain, playgroundTeeterTotterDeath, playgroundSwingSetDeath, Playground, DogDeath, Dog, PondDeath,
+Pond,MudDeath, Mud 
 */
 
 function restart ()
@@ -189,7 +190,7 @@ Dog.createInteraction(
 			return false;
 		else
 			return true;
-	}
+	},
 	"Play with the nice puppy?",
 	function(gameState){
 		gameState.vars('set',"DogDeath", true);
@@ -229,7 +230,7 @@ PoppyFieldDeath.createInteraction(
 			return false;
 		else
 			return true;
-	}
+	},
 	"Investigate the dead body.",
 	function(gameState){
 		updateMessages("You touched a dead guy. Congrats.");
@@ -248,7 +249,7 @@ var PoppyField = new EventPanel();
 PoppyField.createInteraction(
 	function(gameState){
 		return gameState.vars('get','PoppyFieldDeath') == null ||gameState.vars('get','PoppyFieldDeath') ==false ;
-	}
+	},
 	"Continue walking through the field.",
 	function(gameState){
 		PoppyFieldDeath.isDisplayed = true;
@@ -256,3 +257,131 @@ PoppyField.createInteraction(
 		updateMessages("Your eyes are getting very heavy...");
 		restart();
 	});
+
+/*
+*	End of Poppy Field and PoppyFieldDeath.
+*/
+
+/*
+*	Start of Pond and Pond Death. 
+*/
+
+var PondDeath = new EventPanel();
+	PondDeath.x = 13;
+	PondDeath.y = 17;
+	PondDeath.width = 2;
+	PondDeath.height =2;
+	PondDeath.visibleText = "There seems to be a body floating on the pond.";
+	PondDeath.detailText = "There is a bloated body floating by the shore of the pond.";
+	PondDeath.autoInteract = false;
+	PondDeath.isDisplayed = false;
+
+PondDeath.createInteraction(
+	function(gameState){
+	if (gameState.vars('get','PondDeath') == null ||gameState.vars('get','PondDeath') ==false)
+			return false;
+		else
+			return true;	
+	},
+	"Investigate the dead body."
+	function(gameState){
+		updateMessages("You touched a dead body. Congrats.");
+	});
+
+var Pond= new EventPanel();
+	Pond.x = 13;
+	Pond.y = 17;
+	Pond.width = 2;
+	Pond.height = 2;
+	Pond.visibleText = "There seems to be a pond in the distance.";
+	Pond.detailText = "There is a pond in front of you. There seems to be lights on across the pond.";
+	Pond.autoInteract = false;
+	Pond.isDisplayed = true;
+
+Pond.createInteraction(
+	function(gameState){
+	 return gameState.vars('get','PoppyFieldDeath') == null ||gameState.vars('get','PoppyFieldDeath') ==false ;	
+	},
+	"Approach the pond's edge",
+	function(gameState){
+		PondDeath.isDisplayed = true;
+		gameState.vars('set', 'PondDeath', true);
+		updateMessages("You feel drawn to the pond. Something grabs you ankle and you're pulled down into the dark depths of the water.");
+		restart();
+	});
+
+Pond.createInteraction(
+	function(gameState){
+		return true;
+	},
+	"Leave the pond.",
+	function(gameState){
+		updateMessages("You left the pond.");
+	});
+
+/*
+*	End of Pond and PondDeath 
+*/
+
+/*
+*	Start of Mud and Mud death.
+*/
+
+var MudDeath = new EventPanel();
+	MudDeath.x = 6;
+	MudDeath.y = 14;
+	MudDeath.width =2;
+	MudDeath.height =2;
+	MudDeath.visibleText = "The seems to be a muddy body ahead."
+	MudDeath.detailText = "The is a body facedown, covered in mud."
+	MudDeath.autoInteract = false;
+	MudDeath.isDisplayed = false;
+
+MudDeath.createInteraction(
+	function(gameState)
+	{
+	if (gameState.vars('get','MudDeath') == null ||gameState.vars('get','MudDeath') ==false)
+			return false;
+		else
+			return true;	
+	},
+	"Investigate the muddy body.",
+	function(gameState){
+		updateMessages("You touched a dead guy, Congrats");
+	});
+
+var Mud = new EventPanel();
+	Mud.x = 6;
+	Mud.y = 14;
+	Mud.width =2;
+	Mud.height =2;
+	Mud.visibleText = "The seems to be a patch of mud closeby."
+	Mud.detailText = "The is a muddy patch on the ground."
+	Mud.autoInteract = false;
+	Mud.isDisplayed = true;
+
+Mud.createInteraction(
+	function(gameState){
+	return gameState.vars('get','MudDeath') == null ||gameState.vars('get','MudDeath') ==false ;		
+	},
+	"Continue through the Mud.",
+	function(gameState){
+		MudDeath.isDisplayed = true;
+		gameState.vars('set', 'MudDeath', true);
+		updateMessages("You continue through the mud and get stuck, suffocating yourself.");
+		restart();
+	});
+
+Mud.createInteraction(
+	function(gameState)
+	{
+		return true;
+	},
+	"Do not walk through the mud.",
+	function(gameState){
+		updateMessages("You walk around the mud.");
+	});
+
+/*
+*	End of Mud and Mud Death
+*/
