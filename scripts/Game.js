@@ -1,11 +1,11 @@
 function Game() {
-	this.player = 1;//new Player();
-	this.mapX = 0;
-	this.mapY = 0;
+	this.player = new Player();
+	this.mapX = 20;
+	this.mapY = 20;
 	this.eventPanels = []; //{name,event}
 	this.gameVars = []; //{name,value}
 }
-								//"set"/"get", varName, variable value
+								//"set"/"get"/"remove", varName, variable value
 Game.prototype.vars = function(mode, varName, value) {
 	var arrElement = null;
 	var iii = 0;

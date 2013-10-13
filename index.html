@@ -5,9 +5,32 @@
 <title>Asylum Jam Horror Game - Sonny Jim</title>
 <link rel="stylesheet" href="styles/style.css" />
 <script type="text/javascript" src="scripts/EventPanel.js"></script>
+<script type="text/javascript" src="scripts/Player.js"></script>
 <script type="text/javascript" src="scripts/Game.js"></script>
+<script type="text/javascript" src="scripts/GameController.js"></script>
+<script>
+window.gameController = new GameController();
+</script>
+<script type="text/javascript" src="scripts/Movement.js"></script>
 <script type="text/javascript" src="vendor/soundjs/soundjs-0.5.0.min.js"></script>
 </head>
 <body>
+<script>
+var panel = new EventPanel();
+panel.x = 10;
+panel.y = 10;
+panel.width = 5;
+panel.height = 4;
+var panel2 = new EventPanel();
+panel2.x = 3;
+panel2.y = 5;
+panel2.width = 2;
+panel2.height=1;
+
+window.gameController.gameState.events('set','testPanel',panel);
+window.gameController.gameState.events('set','testPanel2',panel2);
+window.gameController.gameState.player.fieldOfView = 2;
+window.gameController.checkVisionRadius();
+</script>
 </body>
 </html>

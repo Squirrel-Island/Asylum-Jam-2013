@@ -1,10 +1,10 @@
-var player = new Player();
-var mapMax = 20;
+var player = window.gameController.gameState.player;
+var mapMax = window.gameController.gameState.mapX;
 var currentKey = null;
 var interval = null;
 var stepDuration = 500; //milliseconds between steps
 
-//setInterval(function() {document.body.innerHTML=player.x+","+player.y;},100);
+setInterval(function() {document.body.innerHTML=player.x+","+player.y; window.gameController.checkVisionRadius();},100);
 
 function up()
 {
@@ -82,7 +82,7 @@ window.addEventListener('keyup',
      		//alert(player.x);    
     		}
     	else if (event.keyCode == 38|| event.keyCode == 87) {
-     		//alert(player.y);
+     		//alert(window.gameController.gameState.player.x);
      		}
     	else if (event.keyCode == 40|| event.keyCode == 83) {
      		//alert(player.y); 
