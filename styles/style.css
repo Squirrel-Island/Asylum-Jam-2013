@@ -78,7 +78,7 @@ ul {
 }
 
 .interface {
-  display: inline;
+  display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
   -moz-transition: all .4s ease-in;
@@ -107,6 +107,7 @@ ul {
   position: absolute;
   bottom: 0;
   width: 100%;
+  background-color: #000;
 }
 
 #inputField input {

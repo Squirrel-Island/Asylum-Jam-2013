@@ -22,26 +22,17 @@ function updateMessages(message) {
   textArea.insertBefore(newElement, theFirstChild);
 }
 
-function updateInteractions(array) {
-  // Baseline check for null parameters
-  if (array != null) {
-
+function updateInteractions(arr) {
     // Get a reference to the interactions element
-    var updateArea = document.getElementById(inputField);
-    // Get a reference to the last update (first child)
-    var theFirstChild = textArea.firstChild;
-
-    // Create counter
-    var counter = 0;
-    // Create length minus 1
-    var length = array.length() - 1 ;
+    var updateArea = document.getElementById('inputField');
+    updateArea.innerHTML = "";
 
     // v is equal to the currently iterated property
-    for(var v in array) {
+    for(var iii=0; iii<arr.length;iii++) {
       // Grab info from array
-      var name = v["buttonText"];
-      var action = v["action"];
-      
+      var name = arr[iii]["buttonText"];
+      var action = arr[iii]["action"];
+
       // Create a new interactions element
       var newElement = document.createElement("li");
       // Create text for element
@@ -50,28 +41,14 @@ function updateInteractions(array) {
       newElement.appendChild(text);
 
       // Set class for interactions element to animated fadeInDown
-      newElement.setAttribute("class", "animated fadeInDown");
+      newElement.setAttribute("class", "animated fadeInDown interface");
 
       // Set onclick action for interactions element
-      newElement.setAttribute("onclick", "action");
+      newElement.setAttribute("onclick", action);
 
       // Append list element
-      textArea.appendChild(newElement);
-
-      counter++;
-
-      if (counter != length) {
-        // Create a new interactions element
-        var spanElement = document.createElement("span");
-        // Create text for element
-        var text = document.createTextNode("|");
-        // Create full update element with text
-        spanElement.appendChild(text);
-
-        textArea.appendChild(spanElement);
-      }
+      updateArea.appendChild(newElement);
     }
-  }
 }
 
 function updateInventory(array) {

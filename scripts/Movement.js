@@ -4,7 +4,7 @@ var currentKey = null;
 var interval = null;
 var stepDuration = 1000 / window.gameController.movementSpeed; //milliseconds between steps
 
-setInterval(function() {document.getElementById('coord').innerHTML=player.x+","+player.y+" " + window.gameController.inSight.toString();},100);
+setInterval(function() {document.getElementById('coord').innerHTML=player.x+","+player.y;},100);
 
 function up()
 {

@@ -76,7 +76,7 @@ GameController.prototype.update = function() {
 	//if it is in sight, but not in this.inSight array, push it to this.inSight
 	for(var iii=0; iii<canSee.length; iii++) {
 		if(this.inSight.indexOf(canSee[iii]) < 0) {
-			document.body.innerHTML += canSee[iii]['event'].visibleText + "<br>"; //replace with actual add text function
+			updateMessages(canSee[iii]['event'].visibleText); 
 			this.inSight.push(canSee[iii]);
 		}
 	}
@@ -92,18 +92,19 @@ GameController.prototype.update = function() {
 	//if player is in contact with it, but it's not in this.inContact array, push it to this.inContact
 	for(var iii=0; iii<walkingOn.length; iii++) {
 		if(this.inContact.indexOf(walkingOn[iii]) < 0) {
-			document.body.innerHTML += walkingOn[iii]['event'].detailText + "<br>"; //replace with actual add text function
-			this.runEvents(walkingOn[iii]);											//run events in current EventPanel
+			this.runEvents(walkingOn[iii]);					    //run events in current EventPanel
+			updateMessages(walkingOn[iii]['event'].detailText);
 			this.inContact.push(walkingOn[iii]);
+			this.displayInteractions();							//display current interaction options
 		}
 	}
 
 	//if it is in the this.inContact array, but not in contact with the player, remove it from the array
 	for(var iii=0; iii<this.inContact.length; iii++)
-		if(walkingOn.indexOf(this.inContact[iii]) < 0)
+		if(walkingOn.indexOf(this.inContact[iii]) < 0) {
 			this.inContact.splice(iii,1);
-
-	this.displayInteractions();
+			this.displayInteractions();							//display current interaction options
+		}
 };
 
 GameController.prototype.runEvents = function(e) {
@@ -132,5 +133,5 @@ GameController.prototype.displayInteractions = function() {
 						"action": this.inContact[iii]['event'].interactions[jjj]['action']
 					});
 
-	document.getElementById('iCount').innerHTML = "<br>" + possibleInteractions.length; //replace with call to function to display interaction buttons
+	updateInteractions(possibleInteractions); 
 };

@@ -25,11 +25,11 @@ panel.width = 5;
 panel.height = 4;
 panel.visibleText = "Here lies panel 1...";
 panel.detailText = "This sure is some detailed text for panel 1. Aww yeah!";
-panel.createEvent(function(gameState) {return true;},function(gameState){alert("you've hit panel's event!");gameState.vars('set','p1',true);});
-panel.createInteraction(function(){return true;},"hi",function() {return;});
-panel.createInteraction(function(){return true;},"hi",function() {return;});
-panel.createInteraction(function(){return false;},"hi",function() {return;});
-panel.createInteraction(function(){return true;},"hi",function() {return;});
+panel.createEvent(function(gameState) {return true;},function(gameState){updateMessages("you've hit panel's event!");gameState.vars('set','p1',true);});
+panel.createInteraction(function(){return true;},"hi",function() {updateMessages('does this even work?');});
+panel.createInteraction(function(){return true;},"hi",function() {updateMessages('does this even work?');});
+//panel.createInteraction(function(){return false;},"hi",function() {updateMessages("does this even work?");});
+panel.createInteraction(function(){return true;},"hi",function() {updateMessages('does this even work?');});
 
 var panel2 = new EventPanel();
 panel2.x = 10;
@@ -38,7 +38,7 @@ panel2.width = 2;
 panel2.height = 1;
 panel2.visibleText = "panel2 died too...";
 panel2.detailText = "Didn't think I'd forget some detail text for panel2, did ya? Well, I might have because it's 4:30 AM and I'm tired...";
-panel2.createEvent(function(gameState) {return gameState.vars('get','p1') === true;},function(){alert('flyin atchu!');});
+panel2.createEvent(function(gameState) {return gameState.vars('get','p1') === true;},function(){updateMessages('flyin atchu!');});
 panel2.createInteraction(function(){return true;},"hi",function() {return;});
 
 window.gameController.gameState.events('set','testPanel',panel);
