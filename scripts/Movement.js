@@ -2,7 +2,7 @@ var player = window.gameController.gameState.player;
 var mapMax = window.gameController.gameState.mapX;
 var currentKey = null;
 var interval = null;
-var stepDuration = 500; //milliseconds between steps
+var stepDuration = 1000 / window.gameController.movementSpeed; //milliseconds between steps
 
 setInterval(function() {document.getElementById('coord').innerHTML=player.x+","+player.y+" " + window.gameController.inSight.toString();},100);
 

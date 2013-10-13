@@ -1,5 +1,6 @@
 function GameController() {
 	this.gameState = new Game();
+	this.movementSpeed = 0;
 	this.inSight = [];
 	this.inContact = [];
 }
@@ -16,12 +17,14 @@ GameController.prototype.checkCollision = function() {
 		var panelObj = panel;
 		if(panel != null) {
 			panel = panel['event'];
-			if(playerX >= panel.x && playerX <= (panel.x + panel.width) && playerY <= panel.y && playerY >= (panel.x - panel.height)) {
+
+			if(playerX >= panel.x && playerX <= (panel.x + panel.width) && playerY <= panel.y && playerY >= (panel.y - panel.height)) {
 				collidingWith.push(panelObj);
 			}
 		}
 	}
 
+	//alert(collidingWith.toString());
 	return collidingWith.filter(function(value,index,self) {
 	    		return self.indexOf(value) === index
 			});
@@ -91,7 +94,7 @@ GameController.prototype.onMove = function() {
 	for(var iii=0; iii<walkingOn.length; iii++) {
 		if(this.inContact.indexOf(walkingOn[iii]) < 0) {
 			document.body.innerHTML += walkingOn[iii]['event'].detailText + "<br>"; //replace with actual add text function
-																					//add options to bottom of screen when in contact
+			this.runEvents(walkingOn[iii]);
 			this.inContact.push(walkingOn[iii]);
 		}
 	}
@@ -101,4 +104,19 @@ GameController.prototype.onMove = function() {
 		if(walkingOn.indexOf(this.inContact[iii]) < 0)
 			this.inContact.splice(iii,1);
 
+	this.runEvents();
+
+};
+
+GameController.prototype.runEvents = function(e) {
+	var eventObj = e;
+	if(eventObj != null) {
+		eventObj = eventObj['event'];
+
+		for(var jjj=0; jjj<eventObj.events.length; jjj++)
+			if(eventObj.events[jjj] != null)
+				if(eventObj.events[jjj]['condition'](this.gameState))
+					eventObj.events[jjj]['action'](this.gameState);
+
+	}
 };

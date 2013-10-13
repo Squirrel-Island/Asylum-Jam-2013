@@ -6,7 +6,7 @@ function EventPanel() {
 	this.audioClip = "";
 	this.visibleText = ""; //text when the panel enters the player's vision radius
 	this.detailText = ""; //text when the player reaches the actual panel
-	this.autoInteract = false; //scripted event
+	this.autoInteract = true; //scripted event
 	this.isDisplayed = false; //is visible on the map
 	this.interactions = []; //{condition(function), option(string), action(function)}
 	this.events = []; //{condition, action(function)}

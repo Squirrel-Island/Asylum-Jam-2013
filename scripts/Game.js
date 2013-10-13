@@ -1,7 +1,7 @@
 function Game() {
 	this.player = new Player();
-	this.mapX = 20;
-	this.mapY = 20;
+	this.mapX = 0;
+	this.mapY = 0;
 	this.eventPanels = []; //{name,event}
 	this.gameVars = []; //{name,value}
 }
