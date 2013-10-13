@@ -4,14 +4,17 @@ var currentKey = null;
 var interval = null;
 var stepDuration = 500; //milliseconds between steps
 
-setInterval(function() {document.body.innerHTML=player.x+","+player.y; window.gameController.checkVisionRadius();},100);
+setInterval(function() {document.getElementById('coord').innerHTML=player.x+","+player.y+" " + window.gameController.inSight.toString();},100);
 
 function up()
 {
+    
     if(player.y < mapMax)
     	player.y+=1;
     //else
     	//prompt hit wall
+
+    window.gameController.onMove();
 }
 
 function down()
@@ -20,6 +23,8 @@ function down()
     	player.y-=1;
     //else
     	//prompt hit wall
+
+    window.gameController.onMove();
 }
 
 function right()
@@ -29,6 +34,8 @@ function right()
 
     //else
     	//prompt hit wall
+
+    window.gameController.onMove();
 }
 function left()
 {
@@ -36,6 +43,8 @@ function left()
     	player.x-=1;
     //else 
     	//prompt hit wall
+
+    window.gameController.onMove();
 }
 
 document.addEventListener('keydown', function(event) {
