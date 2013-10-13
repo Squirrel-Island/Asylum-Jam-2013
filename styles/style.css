@@ -65,13 +65,16 @@ ul {
     border: 1px dotted #fff; */
 }
 
-.textBlock {
+.fadeBlock {
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
   -webkit-animation: fadein 2s; /* Safari and Chrome */
   -o-animation: fadein 2s; /* Opera */;
 }
 
+.indent {
+  text-indent: 1em;
+}
 
 /*
   IDs
@@ -81,10 +84,6 @@ ul {
 	height: 100%;
 	margin: 0 auto;
 	width: 1000px;
-}
-
-.indent {
-  text-indent: 1em;
 }
 
 #inputField {
