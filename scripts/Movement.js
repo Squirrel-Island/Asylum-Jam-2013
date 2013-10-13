@@ -4,7 +4,7 @@ var currentKey = null;
 var interval = null;
 var stepDuration = 500; //milliseconds between steps
 
-//setInterval(function() {document.getElementById('container').innerHTML=player.x+","+player.y;},100);
+setInterval(function() {document.body.innerHTML=player.x+","+player.y;},100);
 
 function up()
 {
@@ -40,6 +40,7 @@ function left()
 
 document.addEventListener('keydown', function(event) {
     //first code is arrows, second is wasd
+    var count =0;
     if (event.keyCode == 37 || event.keyCode == 65) {
         if(interval == null || currentKey != event.keyCode) {
           clearInterval(interval);
