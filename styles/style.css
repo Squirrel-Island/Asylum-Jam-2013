@@ -77,7 +77,8 @@ ul {
   text-indent: 1em;
 }
 
-.interfaceButton {
+.interface {
+  display: inline;
   padding-left: 10px;
   padding-right: 10px;
   -moz-transition: all .4s ease-in;
@@ -85,10 +86,11 @@ ul {
   -webkit-transition: all .4s ease-in;
 }
 
-.interfaceButton:hover {
+.interface:hover {
   color: #739191;
   cursor: pointer;
 }
+
 
 /*
   IDs
