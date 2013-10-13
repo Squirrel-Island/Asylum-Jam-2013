@@ -4,7 +4,7 @@ var currentKey = null;
 var interval = null;
 var stepDuration = 500; //milliseconds between steps
 
-setInterval(function() {document.getElementById('container').innerHTML=player.x+","+player.y;},100);
+//setInterval(function() {document.getElementById('container').innerHTML=player.x+","+player.y;},100);
 
 function up()
 {
