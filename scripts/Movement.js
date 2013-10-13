@@ -14,7 +14,7 @@ function up()
     //else
     	//prompt hit wall
 
-    window.gameController.onMove();
+    window.gameController.update();
 }
 
 function down()
@@ -24,7 +24,7 @@ function down()
     //else
     	//prompt hit wall
 
-    window.gameController.onMove();
+    window.gameController.update();
 }
 
 function right()
@@ -35,7 +35,7 @@ function right()
     //else
     	//prompt hit wall
 
-    window.gameController.onMove();
+    window.gameController.update();
 }
 function left()
 {
@@ -44,7 +44,7 @@ function left()
     //else 
     	//prompt hit wall
 
-    window.gameController.onMove();
+    window.gameController.update();
 }
 
 document.addEventListener('keydown', function(event) {

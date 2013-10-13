@@ -24,7 +24,6 @@ GameController.prototype.checkCollision = function() {
 		}
 	}
 
-	//alert(collidingWith.toString());
 	return collidingWith.filter(function(value,index,self) {
 	    		return self.indexOf(value) === index
 			});
@@ -69,7 +68,7 @@ GameController.prototype.checkVisionRadius = function() {
 			});
 };
 
-GameController.prototype.onMove = function() {
+GameController.prototype.update = function() {
 	
 	//VISION RADIUS CHECKS
 	var canSee = this.checkVisionRadius();
@@ -94,7 +93,7 @@ GameController.prototype.onMove = function() {
 	for(var iii=0; iii<walkingOn.length; iii++) {
 		if(this.inContact.indexOf(walkingOn[iii]) < 0) {
 			document.body.innerHTML += walkingOn[iii]['event'].detailText + "<br>"; //replace with actual add text function
-			this.runEvents(walkingOn[iii]);
+			this.runEvents(walkingOn[iii]);											//run events in current EventPanel
 			this.inContact.push(walkingOn[iii]);
 		}
 	}
@@ -104,8 +103,7 @@ GameController.prototype.onMove = function() {
 		if(walkingOn.indexOf(this.inContact[iii]) < 0)
 			this.inContact.splice(iii,1);
 
-	this.runEvents();
-
+	this.displayInteractions();
 };
 
 GameController.prototype.runEvents = function(e) {
@@ -119,4 +117,20 @@ GameController.prototype.runEvents = function(e) {
 					eventObj.events[jjj]['action'](this.gameState);
 
 	}
+};
+
+GameController.prototype.displayInteractions = function() {
+	var possibleInteractions = [];
+
+	for(var iii=0; iii < this.inContact.length; iii++) 
+		if(this.inContact[iii] != null)
+			for(var jjj=0; jjj < this.inContact[iii]['event'].interactions.length; jjj++)
+				if(this.inContact[iii]['event'].interactions[jjj] != null && 
+					this.inContact[iii]['event'].interactions[jjj]['condition'](this.gameState) === true)
+					possibleInteractions.push({
+						"buttonText": this.inContact[iii]['event'].interactions[jjj]['option'],
+						"action": this.inContact[iii]['event'].interactions[jjj]['action']
+					});
+
+	document.getElementById('iCount').innerHTML = "<br>" + possibleInteractions.length; //replace with call to function to display interaction buttons
 };
