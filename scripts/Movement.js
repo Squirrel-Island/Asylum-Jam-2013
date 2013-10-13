@@ -1,6 +1,6 @@
 var px =0, py =0;
 var MapMax =20;
-var r = false;
+
 
 var secpstep = 1*1000 // 1000 is converstion to milliseconds
 function up()
@@ -32,15 +32,27 @@ if (px>0)
 //else 
 	//prompt hit wall
 }
+
+function starttime(c) 
+{	
+	if (c==0)
+	{
+		var r = setTimeout(right(), 5);
+	}
+}
 //combination of keydown for running later
+
 document.addEventListener('keydown', function(event) {
     //first code is arrows, second is wasd
+    var count =0;
     if (event.keyCode == 37 || event.keyCode == 65) {
         left();
 
     }
     else if (event.keyCode == 39|| event.keyCode == 86) {
      	right();    
+    //starttime(count);
+    //count++;
     }
     else if (event.keyCode == 38|| event.keyCode == 87) {
      	up(); }
@@ -55,6 +67,7 @@ window.addEventListener('keyup',
         	alert(px)
 			}
     	else if (event.keyCode == 39|| event.keyCode == 86) {
+     	//	clearTimeout(r);
      		alert(px);    
     		}
     	else if (event.keyCode == 38|| event.keyCode == 87) {
