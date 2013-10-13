@@ -41,7 +41,8 @@ li:hover {
 }
 
 p {
-  padding: 0px;
+  padding-top: 0px;
+  padding-bottom: 20px;
   margin: 0px;
 }
 
@@ -69,7 +70,7 @@ ul {
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
   -webkit-animation: fadein 2s; /* Safari and Chrome */
-  -o-animation: fadein 2s; /* Opera */;
+  -o-animation: fadein 2s; /* Opera */
 }
 
 .indent {
