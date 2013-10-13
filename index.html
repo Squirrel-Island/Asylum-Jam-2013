@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <title>Asylum Jam Horror Game - Sonny Jim</title>
 <link rel="stylesheet" href="styles/style.css" />
+<link rel="stylesheet" href="vendor/animate.css/animate.css"/>
 <script type="text/javascript" src="scripts/EventPanel.js"></script>
 <script type="text/javascript" src="scripts/interfaceUpdate.js"></script>
-<script type="text/javascript" src="vendor/animate.css/animate.css"></script>
 <script type="text/javascript" src="vendor/soundjs/soundjs-0.5.0.min.js"></script>
 </head>
 <body>
@@ -24,8 +24,6 @@
       </div>
 			<div id="inventory">
         		<h4 class="indent">Inventory</h4>
-        		<button onclick="updateContents('I am an update')">Add Update</button>
-        		<button onclick="updateContents('I am another update')">Add Update 2</button>
 				<ul class="indent">
 					<li>Key</li>
 					<li>Wallet</li>
@@ -34,7 +32,10 @@
 			</div>
 		</div>
 		<div id="inputField">
-			<input name="textPrompt" id="textPrompt" placeholder="Enter your command here...">
+			<a class="interfaceButton" onclick="updateMessages('I am an update')">Add Update</a>
+			<span>|</span>
+			<a class="interfaceButton" onclick="updateMessages('I am another update')">Add Another Update</a>
+			<!-- <input name="textPrompt" id="textPrompt" placeholder="Enter your command here..."> -->
 		</div>
 </div>
 
