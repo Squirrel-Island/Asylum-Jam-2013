@@ -3,7 +3,8 @@
 */
 body {
   background: #000 url('../images/forest.png');
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
+  background-position: center top;
 	color: #eee;
 	font-family: helvetica, arial, verdana, sans-serif;
 	height: 100%;
