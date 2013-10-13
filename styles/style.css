@@ -40,6 +40,11 @@ li:hover {
   cursor: pointer;
 }
 
+p {
+  padding: 0px;
+  margin: 0px;
+}
+
 textarea:focus, input:focus {
     color: #fff;
 }
@@ -58,6 +63,13 @@ ul {
 /*  background-color: #000;
     padding-right: 10px;
     border: 1px dotted #fff; */
+}
+
+p.textBlock {
+  animation: fadein 2s;
+  -moz-animation: fadein 2s; /* Firefox */
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+  -o-animation: fadein 2s; /* Opera */;
 }
 
 
@@ -87,7 +99,7 @@ ul {
 	border: none;
 	margin: 0px;
 	background-color: #555;
-	padding:5px 0px 5px 5px;
+	padding: 5px 0px 5px 10px;
 }
 
 #inventory {
@@ -104,14 +116,25 @@ ul {
 	margin: 0px;
   padding-top: 20px;
 	height: 100%;
-  height: 300px;
-  
-  animation: fadein 2s;
-  -moz-animation: fadein 2s; /* Firefox */
-  -webkit-animation: fadein 2s; /* Safari and Chrome */
-  -o-animation: fadein 2s; /* Opera */;
+/*  height: 300px;*/
 }
 
+
+/*
+  Cross Browser Stuff
+*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ccc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ccc;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ccc;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ccc;
+}
 @keyframes fadein {
     from {
         opacity:0;
@@ -143,22 +166,4 @@ ul {
     to {
         opacity: 1;
     }
-}
-
-
-
-/*
-  Cross Browser Stuff
-*/
-::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #ccc;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #ccc;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #ccc;
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #ccc;
 }
