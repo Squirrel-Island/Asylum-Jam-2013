@@ -12,7 +12,7 @@ function updateContents(message) {
   newElement.appendChild(text);
 
   // Set class for update element to fadeBlock
-  newElement.setAttribute("class", "fadeBlock");
+  newElement.setAttribute("class", "animated fadeInDown");
 
   // Insert the new element before the first child
   textArea.insertBefore(newElement, theFirstChild);

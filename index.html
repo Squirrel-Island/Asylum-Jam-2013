@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="styles/style.css" />
 <script type="text/javascript" src="scripts/EventPanel.js"></script>
 <script type="text/javascript" src="scripts/interfaceUpdate.js"></script>
+<script type="text/javascript" src="vendor/animate.css/animate.css"></script>
 <script type="text/javascript" src="vendor/soundjs/soundjs-0.5.0.min.js"></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
 		<div class="centerContent">
 			<div id="textArea">
 
-        <p class="fadeBlock">
+        <p class="animated fadeInDown">
           You're in a bloody park. A giant dog named Sonny Jim just dove out of a tree and ripped your face off.
         </p>
           
@@ -24,6 +25,7 @@
 			<div id="inventory">
         		<h4 class="indent">Inventory</h4>
         		<button onclick="updateContents('I am an update')">Add Update</button>
+        		<button onclick="updateContents('I am another update')">Add Update 2</button>
 				<ul class="indent">
 					<li>Key</li>
 					<li>Wallet</li>
