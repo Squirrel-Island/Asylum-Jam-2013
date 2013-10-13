@@ -26,9 +26,9 @@ panel.height = 4;
 panel.visibleText = "Here lies panel 1...";
 panel.detailText = "This sure is some detailed text for panel 1. Aww yeah!";
 panel.createEvent(function(gameState) {return true;},function(gameState){updateMessages("you've hit panel's event!");gameState.vars('set','p1',true);});
+panel.createInteraction(function(){return true;},"hi",function() {updateMessages("does this even work?");});
 panel.createInteraction(function(){return true;},"hi",function() {updateMessages('does this even work?');});
-panel.createInteraction(function(){return true;},"hi",function() {updateMessages('does this even work?');});
-//panel.createInteraction(function(){return false;},"hi",function() {updateMessages("does this even work?");});
+panel.createInteraction(function(){return false;},"hi",function() {updateMessages("does this even work?");});
 panel.createInteraction(function(){return true;},"hi",function() {updateMessages('does this even work?');});
 
 var panel2 = new EventPanel();
