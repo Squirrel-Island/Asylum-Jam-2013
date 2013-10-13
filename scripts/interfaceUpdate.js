@@ -23,33 +23,33 @@ function updateMessages(message) {
 }
 
 function updateInteractions(arr) {
-    // Get a reference to the interactions element
-    var updateArea = document.getElementById('inputField');
-    updateArea.innerHTML = "";
+  // Get a reference to the interactions element
+  var updateArea = document.getElementById('inputField');
+  updateArea.innerHTML = "";
 
-    // v is equal to the currently iterated property
-    for(var iii=0; iii<arr.length;iii++) {
-      // Grab info from array
-      var name = arr[iii]["buttonText"];
-      var action = arr[iii]["action"];
+  // v is equal to the currently iterated property
+  for (var iii = 0; iii < arr.length; iii++) {
+    // Grab info from array
+    var name = arr[iii]["buttonText"];
+    var action = arr[iii]["action"];
 
-      // Create a new interactions element
-      var newElement = document.createElement("li");
-      // Create text for element
-      var text = document.createTextNode(name);
-      // Create full update element with text
-      newElement.appendChild(text);
+    // Create a new interactions element
+    var newElement = document.createElement("li");
+    // Create text for element
+    var text = document.createTextNode(name);
+    // Create full update element with text
+    newElement.appendChild(text);
 
-      // Set class for interactions element to animated fadeInDown
-      newElement.setAttribute("class", "animated fadeInDown interface");
+    // Set class for interactions element to animated fadeInDown
+    newElement.setAttribute("class", "animated fadeInDown interface");
 
-      // Set onclick action for interactions element
-      //newElement.setAttribute("onclick", action);
-      newElement.onclick = action;
+    // Set onclick action for interactions element
+    //newElement.setAttribute("onclick", action);
+    newElement.onclick = action;
 
-      // Append list element
-      updateArea.appendChild(newElement);
-    }
+    // Append list element
+    updateArea.appendChild(newElement);
+  }
 }
 
 function updateInventory(array) {
@@ -58,10 +58,9 @@ function updateInventory(array) {
     // Get a reference to the elementID element (.inventory or .inputField)
     var updateArea = document.getElementById(elementID);
 
-    for(var v in array) {
-    //v is equal to the currently iterated property
+    for (var v in array) {
+      //v is equal to the currently iterated property
 
-       
     }
   }
 }
