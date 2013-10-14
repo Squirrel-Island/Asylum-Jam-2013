@@ -59,7 +59,7 @@ Fountain.createInteraction(
 		if (window.gameController.gameState.vars('get','fountainDeath') == null || window.gameController.gameState.vars('get','fountainDeath') ==false)
 			return true;
 		else
-			false;  }, 
+			return false;  }, 
 	"Drink from Fountain.", 
 	function(gameState) { 
 		window.gameController.gameState.vars('set', 'fountainDeath', true); 
@@ -128,11 +128,11 @@ Playground.createInteraction(
 		if (window.gameController.gameState.vars('get','playgroundTeeterTotterDeath') == null ||window.gameController.gameState.vars('get','playgroundTeeterTotterDeath') ==false)
 			return true;
 		else
-			false;  },
+			return false;  },
 	"Investigate the Teetertotter",
 	function(gameState){
 		playgroundTeeterTotterDeath.isDisplayed = true;
-		window.gameController.gameState.vars('set', playgroundTeeterTotterDeath, true);
+		window.gameController.gameState.vars('set', 'playgroundTeeterTotterDeath', true);
 		updateMessages('You died by Teetertotter.');
 		restart();
 	});
@@ -141,7 +141,7 @@ Playground.createInteraction(
 		if (window.gameController.gameState.vars('get','playgroundSwingSetDeath') == null ||window.gameController.gameState.vars('get','playgroundSwingSetDeath') ==false)
 			return true;
 		else
-			false;  },
+			return false;  },
 	"Investigate Swing Set",
 	function(gameState){
 		playgroundSwingSetDeath.isDisplayed = true;
@@ -174,6 +174,7 @@ var DogDeath = new EventPanel();
 	DogDeath.height = 2;
 	DogDeath.visibleText = "There appears to be a mauled body ahead.";
 	DogDeath.detailText = "There is a mauled body ahead.";
+	DogDeath.isDisplayed= false;
 
 DogDeath.createInteraction(
 	function(gameState) {
@@ -198,9 +199,9 @@ var Dog = new EventPanel();
 Dog.createInteraction(
 	function(gameState){
 		if (window.gameController.gameState.vars('get','DogDeath') == null ||window.gameController.gameState.vars('get','DogDeath') ==false)
-			return false;
-		else
 			return true;
+		else
+			return false;
 	},
 	"Play with the nice puppy?",
 	function(gameState){
