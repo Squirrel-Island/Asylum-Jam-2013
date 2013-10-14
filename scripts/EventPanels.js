@@ -7,6 +7,7 @@ function restart ()
 {
 	window.gameController.gameState.player.x = 2;
 	window.gameController.gameState.player.y = 18;
+	window.gameController.gameState.update();
 	updateMessages("You open your eyes and find yourself in a park.");
 }
 
@@ -16,7 +17,10 @@ function endGame() {
 	aware of the light fading around you. You have just enough time to make out the driver's face as your eyes droop shut."
 	updateMessages(endText);
 	var endText2 = "You open your eyes and find yourself next to a park. You're in a car. The hood is dented.";
-	setTimeout(function(endText2){updateMessages(endText2);},4000);
+	setTimeout(function(){
+		updateMessages(endText2); 
+		setTimeout(function(){updateMessages("Welcome to Hyde Park.");}, 10000);
+	},15000);
 }
 
 /*
