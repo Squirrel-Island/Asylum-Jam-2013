@@ -142,7 +142,7 @@ Playground.createInteraction(
 Playground.createInteraction(
 	function(gameState){
 		return true
-	}
+	},
 	"Leave the Playground",
 	function(gameState){
 		updateMessages("you left the Playground");
@@ -283,7 +283,7 @@ PondDeath.createInteraction(
 		else
 			return true;	
 	},
-	"Investigate the dead body."
+	"Investigate the dead body.",
 	function(gameState){
 		updateMessages("You touched a dead body. Congrats.");
 	});
