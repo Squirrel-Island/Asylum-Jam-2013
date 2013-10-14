@@ -57,7 +57,7 @@ document.addEventListener('keydown', function(event) {
           currentKey = event.keyCode; 
         } 
     }
-    else if (event.keyCode == 39 || event.keyCode == 86) {
+    else if (event.keyCode == 39 || event.keyCode == 68) {
      	if(interval == null || currentKey != event.keyCode) {
           clearInterval(interval);
           interval = setInterval(right,stepDuration);
