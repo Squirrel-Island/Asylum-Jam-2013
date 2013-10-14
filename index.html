@@ -13,6 +13,7 @@
 <script type="text/javascript" src="scripts/init.js"></script>
 <script type="text/javascript" src="scripts/Movement.js"></script>
 <script type="text/javascript" src="vendor/soundjs/soundjs-0.5.0.min.js"></script>
+<script type="text/javascript" src="scripts/EventPanels.js"></script>
 </head>
 <body>
 <div id="coord"></div>
@@ -44,6 +45,9 @@ panel2.createInteraction(function(){return true;},"hi",function() {return;});
 window.gameController.gameState.events('set','testPanel',panel);
 window.gameController.gameState.events('set','testPanel2',panel2);
 window.gameController.gameState.player.fieldOfView = 2;
+
+
+
 </script>
 
 <div id="container">

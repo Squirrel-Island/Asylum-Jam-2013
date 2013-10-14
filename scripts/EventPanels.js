@@ -3,10 +3,10 @@
 Pond,MudDeath, Mud 
 */
 
-function restart ()
+function restart (gameState)
 {
-	player.x = 2;
-	player.y = 18;
+	gameState.player.x = 2;
+	gameState.player.y = 18;
 	updateMessages("You open your eyes and find yourself in a park.");
 }
 
@@ -142,7 +142,7 @@ Playground.createInteraction(
 Playground.createInteraction(
 	function(gameState){
 		return true
-	}
+	},
 	"Leave the Playground",
 	function(gameState){
 		updateMessages("you left the Playground");
@@ -283,7 +283,7 @@ PondDeath.createInteraction(
 		else
 			return true;	
 	},
-	"Investigate the dead body."
+	"Investigate the dead body.",
 	function(gameState){
 		updateMessages("You touched a dead body. Congrats.");
 	});
@@ -385,3 +385,18 @@ Mud.createInteraction(
 /*
 *	End of Mud and Mud Death
 */
+//fountainDeath, Fountain, playgroundTeeterTotterDeath, playgroundSwingSetDeath, Playground, DogDeath, Dog, PondDeath,
+//Pond,MudDeath, Mud 
+
+window.gameController.gameState.events('set','fountainDeath',fountainDeath);
+window.gameController.gameState.events('set','Fountain',Fountain);
+window.gameController.gameState.events('set', 'playgroundSwingSetDeath',playgroundSwingSetDeath );
+window.gameController.gameState.events('set', 'playgroundTeeterTotterDeath',playgroundTeeterTotterDeath );
+window.gameController.gameState.events('set', 'Playground',Playground );
+window.gameController.gameState.events('set', 'DogDeath', DogDeath );
+window.gameController.gameState.events('set', 'Dog',Dog );
+window.gameController.gameState.events('set', 'PondDeath',PondDeath );
+window.gameController.gameState.events('set', 'Pond',Pond );
+window.gameController.gameState.events('set', 'MudDeath',MudDeath );
+window.gameController.gameState.events('set', 'Mud',Mud );
+//window.gameController.gameState.events('set', '', );
