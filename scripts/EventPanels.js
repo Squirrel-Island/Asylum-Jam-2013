@@ -323,7 +323,7 @@ var Pond= new EventPanel();
 
 Pond.createInteraction(
 	function(gameState){
-	 return window.gameController.gameState.vars('get','PoppyFieldDeath') == null ||window.gameController.gameState.vars('get','PoppyFieldDeath') ==false ;	
+	 return (window.gameController.gameState.vars('get','PondDeath') == null ||window.gameController.gameState.vars('get','PondDeath') ==false) ;	
 	},
 	"Approach the pond's edge",
 	function(gameState){
