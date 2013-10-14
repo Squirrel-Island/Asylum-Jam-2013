@@ -18,14 +18,14 @@ GameController.prototype.checkCollision = function() {
 		if(panel != null) {
 			panel = panel['event'];
 
-			if(playerX >= panel.x && playerX <= (panel.x + panel.width) && playerY <= panel.y && playerY >= (panel.y - panel.height)) {
+			if(playerX >= panel.x && playerX <= (panel.x + panel.width) && playerY <= panel.y && playerY >= (panel.y - panel.height) && panel.isDisplayed) {
 				collidingWith.push(panelObj);
 			}
 		}
 	}
 
 	return collidingWith.filter(function(value,index,self) {
-	    		return self.indexOf(value) === index
+	    		return self.indexOf(value) === index;
 			});
 }; 
 
@@ -50,6 +50,9 @@ GameController.prototype.checkVisionRadius = function() {
 
 		if(panel != null) {
 			panel = panel['event'];
+
+			if(!panel.isDisplayed)
+				continue;
 
 			var panelCoords = [];
 			for(var jjj = panel.x; jjj <= panel.x+panel.width; jjj++) 

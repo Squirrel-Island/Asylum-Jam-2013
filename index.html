@@ -24,6 +24,7 @@ panel.x = 10;
 panel.y = 10;
 panel.width = 5;
 panel.height = 4;
+panel.isDisplayed = false;
 panel.visibleText = "Here lies panel 1...";
 panel.detailText = "This sure is some detailed text for panel 1. Aww yeah!";
 panel.createEvent(function(gameState) {return true;},function(gameState){updateMessages("you've hit panel's event!");gameState.vars('set','p1',true);});
