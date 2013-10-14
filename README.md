@@ -9,3 +9,4 @@ Future Changes (next major release)
  - Compass (indicate direction of objects in sight)
  - Text Buffer (Efficiently displays text to user)
  - Text/Visual Enhancements
+ - Playability Upgrades?
