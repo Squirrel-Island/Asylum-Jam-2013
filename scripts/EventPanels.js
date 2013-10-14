@@ -5,12 +5,19 @@ Pond,MudDeath, Mud
 
 function restart ()
 {
-	player.x = 2;
-	player.y = 18;
+	window.gameController.gameState.player.x = 2;
+	window.gameController.gameState.player.y = 18;
 	updateMessages("You open your eyes and find yourself in a park.");
 }
 
-
+function endGame() {
+	var endText = "You walk out of the park and into the street. The lights from the street lamps blind you as you abandon the darkness from the park.\
+	You look up, and your eyes meet another set of lights -- the front of a car. You feel the car smash you into the pavement, and you become painfully\
+	aware of the light fading around you. You have just enough time to make out the driver's face as your eyes droop shut."
+	updateMessages(endText);
+	var endText2 = "You open your eyes and find yourself next to a park. You're in a car. The hood is dented.";
+	setTimeout(function(endText2){updateMessages(endText2);},4000);
+}
 
 /*
 *	Fountain && Fountain Death
@@ -26,7 +33,7 @@ fountainDeath.autoInteract = false;
 fountainDeath.isDisplayed = false;
 
 fountainDeath.createInteraction(
-	function(gameState) { return gameState.vars('get','fountainDeath') == true; }, 
+	function(gameState) { return window.gameController.gameState.vars('get','fountainDeath') == true; }, 
 	"Investigate the dead body.", 
 	function(gameState) { 
 		updateMessages("You just touched a dead guy. Congrats.");}
@@ -45,13 +52,13 @@ var Fountain = new EventPanel();
 
 Fountain.createInteraction(
 	function(gameState) {  
-		if (gameState.vars('get','fountainDeath') == null ||gameState.vars('get','fountainDeath') ==false)
+		if (window.gameController.gameState.vars('get','fountainDeath') == null || window.gameController.gameState.vars('get','fountainDeath') ==false)
 			return true;
 		else
 			false;  }, 
 	"Drink from Fountain.", 
 	function(gameState) { 
-		gameState.vars('set', 'fountainDeath', true); 
+		window.gameController.gameState.vars('set', 'fountainDeath', true); 
 		fountainDeath.isDisplayed = true; 
 		updateMessages("You dead.");
 		restart();
@@ -83,7 +90,7 @@ var playgroundTeeterTotterDeath  = new EventPanel();
 	playgroundTeeterTotterDeath.isDisplayed = false;
 
 playgroundTeeterTotterDeath.createInteraction(
-	function(gameState) {return gameState.vars('get','playgroundTeeterTotterDeath') == true;}, 
+	function(gameState) {return window.gameController.gameState.vars('get','playgroundTeeterTotterDeath') == true;}, 
 	"Investigate the dead body.", 
 	function(gameState) { updateMessages("You touched a dead guy. Congrats")}); 	
 
@@ -98,7 +105,7 @@ var playgroundSwingSetDeath  = new EventPanel();
 	playgroundSwingSetDeath.isDisplayed = false;
 
 playgroundSwingSetDeath.createInteraction(
-	function(gameState) {return gameState.vars('get','playgroundSwingSetDeath') == true;}, 
+	function(gameState) {return window.gameController.gameState.vars('get','playgroundSwingSetDeath') == true;}, 
 	"Investigate the dead body.", 
 	function(gameState) { updateMessages("You touched a dead guy. Congrats")}); 	
 
@@ -110,31 +117,31 @@ var Playground = new EventPanel();
 	Playground.visibleText = "There seems to be a  Playground in the distance.";
 	Playground.detailText = "You are at the Playground.";
 	Playground.autoInteract = false;
-	Playground.isDisplayed = false;
+	Playground.isDisplayed = true;
 
 Playground.createInteraction(
 	function(gameState) {
-		if (gameState.vars('get','playgroundTeeterTotterDeath') == null ||gameState.vars('get','playgroundTeeterTotterDeath') ==false)
+		if (window.gameController.gameState.vars('get','playgroundTeeterTotterDeath') == null ||window.gameController.gameState.vars('get','playgroundTeeterTotterDeath') ==false)
 			return true;
 		else
 			false;  },
 	"Investigate the Teetertotter",
 	function(gameState){
 		playgroundTeeterTotterDeath.isDisplayed = true;
-		gameState.vars('set', playgroundTeeterTotterDeath, true);
+		window.gameController.gameState.vars('set', playgroundTeeterTotterDeath, true);
 		updateMessages('You died by Teetertotter.');
 		restart();
 	});
 Playground.createInteraction(
 	function(gameState) {
-		if (gameState.vars('get','playgroundSwingSetDeath') == null ||gameState.vars('get','playgroundSwingSetDeath') ==false)
+		if (window.gameController.gameState.vars('get','playgroundSwingSetDeath') == null ||window.gameController.gameState.vars('get','playgroundSwingSetDeath') ==false)
 			return true;
 		else
 			false;  },
 	"Investigate Swing Set",
 	function(gameState){
 		playgroundSwingSetDeath.isDisplayed = true;
-		gameState.vars("set",'playgroundSwingSetDeath', true);
+		window.gameController.gameState.vars("set",'playgroundSwingSetDeath', true);
 		updateMessages("You strangle yourself on the swings. good job.");
 		restart();
 	});
@@ -166,7 +173,7 @@ var DogDeath = new EventPanel();
 
 DogDeath.createInteraction(
 	function(gameState) {
-		if (gameState.vars('get','DogDeath') == null || gameState.vars('get', 'DogDeath') == false)
+		if (window.gameController.gameState.vars('get','DogDeath') == null || window.gameController.gameState.vars('get', 'DogDeath') == false)
 			return false;
 		else
 			return true;
@@ -182,18 +189,18 @@ var Dog = new EventPanel();
 	Dog.height= 2;
 	Dog.isDisplayed = true;
 	Dog.visibleText = "You think you hear barking in the distance and see a dog.";
-	Dog.detailText = "Aww. A puppy. With a lot of sharp, point teeth.";
+	Dog.detailText = "Aww. A puppy. With a lot of sharp, pointy teeth.";
 
 Dog.createInteraction(
 	function(gameState){
-		if (gameState.vars('get','DogDeath') == null ||gameState.vars('get','DogDeath') ==false)
+		if (window.gameController.gameState.vars('get','DogDeath') == null ||window.gameController.gameState.vars('get','DogDeath') ==false)
 			return false;
 		else
 			return true;
 	},
 	"Play with the nice puppy?",
 	function(gameState){
-		gameState.vars('set',"DogDeath", true);
+		window.gameController.gameState.vars('set',"DogDeath", true);
 		DogDeath.isDisplayed =true;
 		updateMessages("Sonny Jim ate your face.");
 		restart();
@@ -223,10 +230,11 @@ var PoppyFieldDeath = new EventPanel();
 	PoppyFieldDeath.visibleText = "There seems to be a dead body in a field."; //text when the panel enters the player's vision radius
 	PoppyFieldDeath.detailText = "There is a dead body surrounded by flowers."; //text when the player reaches the actual panel
 	PoppyFieldDeath.autoInteract = false; //scripted event
+	PoppyFieldDeath.isDisplayed = false;
 
 PoppyFieldDeath.createInteraction(
 	function(gameState){
-		if (gameState.vars('get','PoppyFieldDeath') == null ||gameState.vars('get','PoppyFieldDeath') ==false)
+		if (window.gameController.gameState.vars('get','PoppyFieldDeath') == null ||window.gameController.gameState.vars('get','PoppyFieldDeath') ==false)
 			return false;
 		else
 			return true;
@@ -242,20 +250,30 @@ var PoppyField = new EventPanel();
 	PoppyField.width = 2;
 	PoppyField.height = 2;
 	PoppyField.visibleText = "There seems to be a field of flowers in the distance.";
-	PoppyField.detailText = "You are in a field of poppy flowers. You are feeling a bit sleepy.";
+	PoppyField.detailText = "You are in a field of poppy flowers. You are feeling a bit sleepy. There is a mound of dirt at the edge of the field.";
 	PoppyField.autoInteract = false;
 	PoppyField.isDisplayed = true;
 
 PoppyField.createInteraction(
 	function(gameState){
-		return gameState.vars('get','PoppyFieldDeath') == null ||gameState.vars('get','PoppyFieldDeath') ==false ;
+		return window.gameController.gameState.vars('get','PoppyFieldDeath') == null ||window.gameController.gameState.vars('get','PoppyFieldDeath') ==false ;
 	},
 	"Continue walking through the field.",
 	function(gameState){
 		PoppyFieldDeath.isDisplayed = true;
-		gameState.vars('set', 'PoppyFieldDeath', true);
+		window.gameController.gameState.vars('set', 'PoppyFieldDeath', true);
 		updateMessages("Your eyes are getting very heavy...");
 		restart();
+	});
+
+PoppyField.createInteraction(
+	function(gameState) {
+		return window.gameController.gameState.player.has('Shovel') && !window.gameController.gameState.player.has('Rusty Key');
+	},
+	"Dig into the mound",
+	function() {
+		window.gameController.gameState.player.items('set','Rusty Key',function(){updateMessages("This can open a door somewhere.");});
+		updateMessages("You dig a hole and find a rusty key! Did a dog bury this or something?");
 	});
 
 /*
@@ -278,7 +296,7 @@ var PondDeath = new EventPanel();
 
 PondDeath.createInteraction(
 	function(gameState){
-	if (gameState.vars('get','PondDeath') == null ||gameState.vars('get','PondDeath') ==false)
+	if (window.gameController.gameState.vars('get','PondDeath') == null ||window.gameController.gameState.vars('get','PondDeath') ==false)
 			return false;
 		else
 			return true;	
@@ -294,20 +312,39 @@ var Pond= new EventPanel();
 	Pond.width = 2;
 	Pond.height = 2;
 	Pond.visibleText = "There seems to be a pond in the distance.";
-	Pond.detailText = "There is a pond in front of you. There seems to be lights on across the pond.";
+	Pond.detailText = "There is a pond in front of you. There seems to be lights on across the pond. Is there something under the water?";
 	Pond.autoInteract = false;
 	Pond.isDisplayed = true;
 
 Pond.createInteraction(
 	function(gameState){
-	 return gameState.vars('get','PoppyFieldDeath') == null ||gameState.vars('get','PoppyFieldDeath') ==false ;	
+	 return window.gameController.gameState.vars('get','PoppyFieldDeath') == null ||window.gameController.gameState.vars('get','PoppyFieldDeath') ==false ;	
 	},
 	"Approach the pond's edge",
 	function(gameState){
 		PondDeath.isDisplayed = true;
-		gameState.vars('set', 'PondDeath', true);
+		window.gameController.gameState.vars('set', 'PondDeath', true);
 		updateMessages("You feel drawn to the pond. Something grabs you ankle and you're pulled down into the dark depths of the water.");
 		restart();
+	});
+
+Pond.createInteraction(
+	function(gameState) {
+		return !window.gameController.gameState.player.has('Shovel');
+	},
+	"Reach into the water",
+	function() {
+		window.gameController.gameState.player.items('set','Shovel',function(){updateMessages("Used to dig for treasure!");});
+		updateMessages("You reach into the water and pull out a shovel.");
+	});
+
+Pond.createInteraction(
+	function(gameState) {
+		return window.gameController.gameState.player.has('Shovel');
+	},
+	"Reach into the water",
+	function() {
+		updateMessages("You don't feel inclined to reach into the water a second time.");
 	});
 
 Pond.createInteraction(
@@ -340,7 +377,7 @@ var MudDeath = new EventPanel();
 MudDeath.createInteraction(
 	function(gameState)
 	{
-	if (gameState.vars('get','MudDeath') == null ||gameState.vars('get','MudDeath') ==false)
+	if (window.gameController.gameState.vars('get','MudDeath') == null ||window.gameController.gameState.vars('get','MudDeath') ==false)
 			return false;
 		else
 			return true;	
@@ -362,12 +399,12 @@ var Mud = new EventPanel();
 
 Mud.createInteraction(
 	function(gameState){
-	return gameState.vars('get','MudDeath') == null ||gameState.vars('get','MudDeath') ==false ;		
+	return window.gameController.gameState.vars('get','MudDeath') == null ||window.gameController.gameState.vars('get','MudDeath') ==false ;		
 	},
 	"Continue through the Mud.",
 	function(gameState){
 		MudDeath.isDisplayed = true;
-		gameState.vars('set', 'MudDeath', true);
+		window.gameController.gameState.vars('set', 'MudDeath', true);
 		updateMessages("You continue through the mud and get stuck, suffocating yourself.");
 		restart();
 	});
@@ -385,3 +422,113 @@ Mud.createInteraction(
 /*
 *	End of Mud and Mud Death
 */
+
+var ToolShed = new EventPanel();
+	ToolShed.x = 0;
+	ToolShed.y = 20;
+	ToolShed.width = 2;
+	ToolShed.height = 2;
+	ToolShed.visibleText = "A small building is visible in the distance.";
+	ToolShed.detailText = "The building turns out to be a rickety tool shed. A slight breeze may knock it over.";
+	ToolShed.autoInteract = false;
+	ToolShed.isDisplayed = true;
+
+ToolShed.createInteraction(
+	function(gameState){
+		return !window.gameController.gameState.player.has('Rusty Key');
+	},
+	"Search the shed",
+	function(gameState){
+		updateMessages("The door is locked. You can make out a rusty keyhole under the doorknob.");
+	});
+
+ToolShed.createInteraction(
+	function(gameState){
+		return window.gameController.gameState.player.has('Rusty Key');
+	},
+	"Search the shed",
+	function(gameState){
+		updateMessages("You use the rusty key to unlock the door. Searching the shed reveals a small silver key on a shelf. As you're about to leave, a harsh wind rips through the park, and the shed collapses on your head. You faintly realize that you're still holding the silver key as you fall unconscious.");
+		window.gameController.gameState.player.items('set','Silver Key', function() {updateMessages('This looks like it opens some sort of gate.');});
+		ToolShed.isDisplayed = false;
+		ToolShedDeath.isDisplayed = true;
+		window.gameController.gameState.vars('set','ToolShedDeath',true);
+		setTimeout(function() {restart(); window.gameController.gameState.player.items('remove','Silver Key');}, 1500);
+	});
+
+var ToolShedDeath = new EventPanel();
+	ToolShedDeath.x = 0;
+	ToolShedDeath.y = 20;
+	ToolShedDeath.width = 2;
+	ToolShedDeath.height = 2;
+	ToolShedDeath.visibleText = "A dead body is lying in a pile of rubble.";
+	ToolShedDeath.detailText = "There is a dead body lying in the remains of a tool shed. There is something shiny in its hand.";
+	ToolShedDeath.autoInteract = false;
+	ToolShedDeath.isDisplayed = false;
+
+ToolShedDeath.createInteraction(
+	function(gameState){
+		return !window.gameController.gameState.player.has('Silver Key');
+	},
+	"Search the body",
+	function(gameState){
+		updateMessages("You find a silver key in the corpse's hand.");
+		window.gameController.gameState.player.items('set','Silver Key', function() {updateMessages('This looks like it opens some sort of gate.');});
+	});
+
+ToolShedDeath.createInteraction(
+	function(gameState){
+		return window.gameController.gameState.player.has('Silver Key');
+	},
+	"Search the body",
+	function(gameState){
+		updateMessages("You really like touching this body, huh?");
+	});
+
+var SilverGate = new EventPanel();
+	SilverGate.x = 0;
+	SilverGate.y = 2;
+	SilverGate.width = 2;
+	SilverGate.height = 2;
+	SilverGate.visibleText = "Is that an exit to the park?";
+	SilverGate.detailText = "The large silver gate is firmly shut. There is a keyhole in the middle. You can see cars driving along the road beyond the gate.";
+	SilverGate.autoInteract = false;
+	SilverGate.isDisplayed = true;
+
+SilverGate.createInteraction(
+	function(gameState){
+		return window.gameController.gameState.player.has('Silver Key');
+	},
+	"Exit the park",
+	function(gameState){
+		endGame();
+	});
+
+SilverGate.createInteraction(
+	function(gameState){
+		return !window.gameController.gameState.player.has('Silver Key');
+	},
+	"Exit the park",
+	function(gameState){
+		updateMessages("The gate is locked.");
+	});
+//fountainDeath, Fountain, playgroundTeeterTotterDeath, playgroundSwingSetDeath, Playground, DogDeath, Dog, PondDeath,
+//Pond,MudDeath, Mud 
+
+window.gameController.gameState.events('set','fountainDeath',fountainDeath);
+window.gameController.gameState.events('set','Fountain',Fountain);
+window.gameController.gameState.events('set', 'playgroundSwingSetDeath',playgroundSwingSetDeath );
+window.gameController.gameState.events('set', 'playgroundTeeterTotterDeath',playgroundTeeterTotterDeath );
+window.gameController.gameState.events('set', 'Playground',Playground );
+window.gameController.gameState.events('set', 'DogDeath', DogDeath );
+window.gameController.gameState.events('set', 'Dog',Dog );
+window.gameController.gameState.events('set', 'PondDeath',PondDeath );
+window.gameController.gameState.events('set', 'Pond',Pond );
+window.gameController.gameState.events('set', 'MudDeath',MudDeath );
+window.gameController.gameState.events('set', 'Mud',Mud );
+window.gameController.gameState.events('set', 'PoppyField', PoppyField );
+window.gameController.gameState.events('set', 'PoppyFieldDeath',PoppyFieldDeath );
+window.gameController.gameState.events('set', 'ToolShed', ToolShed );
+window.gameController.gameState.events('set', 'ToolShedDeath',ToolShedDeath );
+window.gameController.gameState.events('set', 'SilverGate', SilverGate );
+//window.gameController.gameState.events('set', '', );
