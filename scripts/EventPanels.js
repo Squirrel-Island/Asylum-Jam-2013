@@ -6,8 +6,8 @@ Pond,MudDeath, Mud
 function restart ()
 {
 	window.gameController.gameState.player.x = 2;
-	window.gameController.gameState.player.y = 18;
-	window.gameController.gameState.update();
+	window.gameController.gameState.player.y = 15;
+	window.gameController.update();
 	updateMessages("You open your eyes and find yourself in a park.");
 }
 
