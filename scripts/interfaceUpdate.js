@@ -41,7 +41,7 @@ function updateInteractions(arr) {
     newElement.appendChild(text);
 
     // Set class for interactions element to animated fadeInDown
-    newElement.setAttribute("class", "animated fadeInDown interface");
+    newElement.setAttribute("class", "animated fadeInUp interface");
 
     // Set onclick action for interactions element
     //newElement.setAttribute("onclick", action);
