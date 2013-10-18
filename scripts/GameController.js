@@ -1,5 +1,6 @@
 function GameController() {
 	this.gameState = new Game();
+	this.buffer = new TextBuffer();
 	this.movementSpeed = 0;
 	this.inSight = [];
 	this.inContact = [];

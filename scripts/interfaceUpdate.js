@@ -22,6 +22,22 @@ function updateMessages(message) {
   textArea.insertBefore(newElement, theFirstChild);
 }
 
+function hr() {
+  var textArea = document.getElementById('textArea');
+  var firstChild = textArea.firstChild;
+  var hr = document.createElement("hr");
+  hr.setAttribute("class","animated fadeInDown");
+  textArea.insertBefore(hr,firstChild);
+}
+
+function br() {
+  var textArea = document.getElementById('textArea');
+  var firstChild = textArea.firstChild;
+  var hr = document.createElement("br");
+  hr.setAttribute("class","animated fadeInDown");
+  textArea.insertBefore(hr,firstChild);
+}
+
 function updateInteractions(arr) {
   // Get a reference to the interactions element
   var updateArea = document.getElementById('interactions');
