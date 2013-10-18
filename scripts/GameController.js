@@ -1,6 +1,5 @@
 function GameController() {
 	this.gameState = new Game();
-	this.buffer = new TextBuffer();
 	this.movementSpeed = 0;
 	this.inSight = [];
 	this.inContact = [];
@@ -80,7 +79,7 @@ GameController.prototype.update = function() {
 	//if it is in sight, but not in this.inSight array, push it to this.inSight
 	for(var iii=0; iii<canSee.length; iii++) {
 		if(this.inSight.indexOf(canSee[iii]) < 0) {
-			updateMessages(canSee[iii]['event'].visibleText); 
+			TextBuffer.add(canSee[iii]['event'].visibleText,1,"canSee"); 
 			this.inSight.push(canSee[iii]);
 		}
 	}
@@ -97,7 +96,7 @@ GameController.prototype.update = function() {
 	for(var iii=0; iii<walkingOn.length; iii++) {
 		if(this.inContact.indexOf(walkingOn[iii]) < 0) {
 			this.runEvents(walkingOn[iii]);					    //run events in current EventPanel
-			updateMessages(walkingOn[iii]['event'].detailText);
+			TextBuffer.add(walkingOn[iii]['event'].detailText,5,"detailText");
 			this.inContact.push(walkingOn[iii]);
 			this.displayInteractions();							//display current interaction options
 		}
@@ -109,6 +108,8 @@ GameController.prototype.update = function() {
 			this.inContact.splice(iii,1);
 			this.displayInteractions();							//display current interaction options
 		}
+
+	TextBuffer.flush();
 };
 
 GameController.prototype.runEvents = function(e) {
