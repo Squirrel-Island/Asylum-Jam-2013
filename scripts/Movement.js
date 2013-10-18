@@ -2,7 +2,9 @@ var player = window.gameController.gameState.player;
 var mapMax = window.gameController.gameState.mapX;
 var currentKey = null;
 var interval = null;
+var timeout = null;
 var stepDuration = 1000 / window.gameController.movementSpeed; //milliseconds between steps
+var moveDelay = 100; //milliseconds before a movement initiates
 
 setInterval(function() {document.getElementById('coord').innerHTML=player.x+","+player.y;},100);
 
@@ -47,34 +49,44 @@ function left()
     window.gameController.update();
 }
 
+function initiateMove(moveFunc) {
+    timeout = setTimeout(function() {
+      moveFunc(); 
+      interval = setInterval(moveFunc,stepDuration);
+    },moveDelay);
+}
+
 document.addEventListener('keydown', function(event) {
     //first code is arrows, second is wasd
-    var count =0;
     if (event.keyCode == 37 || event.keyCode == 65) {
-        if(interval == null || currentKey != event.keyCode) {
+        if(timeout == null && interval == null || currentKey != event.keyCode) {
           clearInterval(interval);
-          interval = setInterval(left,stepDuration);
+          clearTimeout(timeout);
+          initiateMove(left);
           currentKey = event.keyCode; 
         } 
     }
     else if (event.keyCode == 39 || event.keyCode == 68) {
-     	if(interval == null || currentKey != event.keyCode) {
+     	if(timeout == null && interval == null || currentKey != event.keyCode) {
           clearInterval(interval);
-          interval = setInterval(right,stepDuration);
+          clearTimeout(timeout);
+          initiateMove(right);
           currentKey = event.keyCode; 
         }    
     }
     else if (event.keyCode == 38|| event.keyCode == 87) {
-        if(interval == null || currentKey != event.keyCode) {
+        if(timeout == null && interval == null || currentKey != event.keyCode) {
           clearInterval(interval);
-     	  interval = setInterval(up,stepDuration);
+          clearTimeout(timeout);
+     	    initiateMove(up);
           currentKey = event.keyCode; 
         }
      }
     else if (event.keyCode == 40|| event.keyCode == 83) {
-     	if(interval == null || currentKey != event.keyCode) {
+     	if(timeout == null && interval == null || currentKey != event.keyCode) {
           clearInterval(interval);
-          interval = setInterval(down,stepDuration);
+          clearTimeout(timeout);
+          initiateMove(down);
           currentKey = event.keyCode; 
         } 
      } 
@@ -84,6 +96,8 @@ window.addEventListener('keyup',
     function(event){
         clearInterval(interval);
         interval = null;
+        clearTimeout(timeout);
+        timeout = null;
         if (event.keyCode == 37 || event.keyCode == 65) {
         	//alert(player.x);
 			}
