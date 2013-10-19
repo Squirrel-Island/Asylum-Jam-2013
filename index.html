@@ -5,6 +5,11 @@
 <title>Asylum Jam Horror Game - Sonny Jim</title>
 <link rel="stylesheet" href="styles/style.css" />
 <link rel="stylesheet" href="vendor/animate.css/animate.css"/>
+
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
+<script type="text/javascript" src="vendor/jQueryRotateCompressed.js"></script>
+
+
 <script type="text/javascript" src="scripts/interfaceUpdate.js"></script>
 <script type="text/javascript" src="scripts/EventPanel.js"></script>
 <script type="text/javascript" src="scripts/Player.js"></script>
@@ -15,7 +20,15 @@
 <script type="text/javascript" src="scripts/EventPanels.js"></script>
 </head>
 <body>
-<div id="coord"></div>
+<script type="text/javascript">
+var angle = 0;
+$(document).ready(function(){ 
+						   
+	setInterval(function() {$("#test").rotate(++angle);}, 50);
+	
+});
+</script>
+<div id="coord">lol</div>
 <div id="container">
 	<h2 class="header">Asylum Jam - Sonny Jim</h2>
 	<div id="game">
@@ -31,11 +44,16 @@
         		<h4>Inventory</h4>
 				<ul id="inventoryList">
 				</ul>
+
+				<div class="compassContainer">
+					<div class="compass"><img id="test" src="images/compassArrow.png" /></div>
+					<h4>Compass Name</h4>
+				</div>
+
 			</div>
 		</div>
 		<div id="inputField">
-			<ul id="interactions">
-			</ul>
+			<ul id="interactions"></ul>
 		</div>
 </div>
 </body>
