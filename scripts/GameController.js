@@ -119,7 +119,8 @@ GameController.prototype.update = function() {
 
 		var x = eventCenterX - this.gameState.player.x;
 		var y = eventCenterY - this.gameState.player.y; 
-		console.log(typeof this.compasses[iii]['compass'].point);
+
+		//console.log(this.compasses[iii]['event'].name +" "+x +","+y);
 		this.compasses[iii]['compass'].point(Compass.getAngle(x,y));
 	}
 };

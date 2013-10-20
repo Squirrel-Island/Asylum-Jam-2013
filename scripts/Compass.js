@@ -44,5 +44,12 @@ Compass.prototype.point = function(degrees)  {
 };
 
 Compass.getAngle = function(x,y) {
-	return Math.ceil(Math.atan(x/y) * (180 / Math.PI));
+	if(x >= 0 && y > 0) //first quad
+		return Math.ceil(Math.atan(x/y) * (180 / Math.PI));
+	else if(x < 0 && y >= 0) // second quad
+		return 270 + Math.ceil(Math.atan(y/-x) * (180 / Math.PI));
+	else if(x <= 0 && y < 0) //third quad
+		return 180 + Math.ceil(Math.atan(x/y) * (180 / Math.PI));
+	else //fourth quad
+		return 90 + Math.ceil(Math.atan(-y/x) * (180 / Math.PI));
 }
