@@ -57,6 +57,8 @@ ul {
 */
 .centerContent {
     padding-left: 20px;
+    height: 600px;
+    overflow: hidden;
 /*  background-color: #000;
     padding-right: 10px;
     border: 1px dotted #fff; */
@@ -130,7 +132,6 @@ ul {
 	/*background-color: #aaa;*/
 	margin: 0px;
   padding-top: 20px;
-	height: 100%;
   width: 750px;
 }
 
