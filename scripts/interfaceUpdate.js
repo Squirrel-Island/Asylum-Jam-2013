@@ -52,6 +52,40 @@ function updateInteractions(arr) {
   }
 }
 
+function updateCompasses(e) {
+
+  var arr = window.gameController.inSight;
+  var updateArea = document.getElementById('compassContainer');
+  updateArea.innerHTML = "";
+
+  for(var iii=0; iii<arr.length; iii++) {
+    var e = arr[iii]['event'];
+
+    var outerDiv = document.createElement("div");
+    outerDiv.setAttribute("class", "animated fadeInDown compassBlock");
+
+    var innerDiv = document.createElement("div");
+    innerDiv.setAttribute("class", "compass");
+
+    var arrow = document.createElement("img");
+    arrow.src = "images/compassArrow.png";
+
+    window.gameController.addCompass(new Compass(arrow),e);
+
+    var h4 = document.createElement("h4");
+
+    var name = document.createTextNode(e.name);
+
+    h4.appendChild(name);
+    innerDiv.appendChild(arrow);
+    outerDiv.appendChild(innerDiv);
+    outerDiv.appendChild(h4);
+
+    updateArea.appendChild(outerDiv);
+
+  }
+}
+
 function updateInventory(arr) {
   var arr = window.gameController.gameState.player.inventory;
   // Get a reference to the interactions element

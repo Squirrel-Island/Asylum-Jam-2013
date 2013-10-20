@@ -42,3 +42,7 @@ Compass.prototype.point = function(degrees)  {
 	if(intervalFunc != null) 
 		this.interval = setInterval(intervalFunc,this.speed);
 };
+
+Compass.getAngle = function(x,y) {
+	return Math.ceil(Math.atan(x/y) * (180 / Math.PI));
+}

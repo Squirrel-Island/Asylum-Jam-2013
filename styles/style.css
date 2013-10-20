@@ -70,13 +70,13 @@ ul {
   background-image: url('../images/compassBG.png');
 }
 
-.compassContainer {
+.compassBlock {
   width: 65px;
   padding: 0px;
-  margin: 0px;
+  margin: 0px 0px 1em 0px;
 }
 
-.compassContainer h4 {
+.compassBlock h4 {
   margin: 5px 0 0 0;
   padding: 0px;
   font-weight: normal;
