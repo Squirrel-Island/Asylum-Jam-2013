@@ -10,12 +10,13 @@ Compass.prototype.point = function(degrees)  {
 	clearInterval(this.interval);
 	this.interval = null;
 	this.angle %= 360;
+	this.angle = (this.angle < 0) ? (this.angle+360):this.angle;
 	var newAngle = degrees % 360;
+	newAngle = (newAngle < 0) ? (newAngle+360):newAngle;
 	var anglePlus = (this.angle+180) % 360;
 	var angleMinus = (this.angle-180 < 0) ? (360+this.angle-180):(this.angle-180);
 	var intervalFunc = null;
 
-	alert((newAngle > this.angle && newAngle <= this.angle + 180) +" "+ (newAngle >= 0 && newAngle <= anglePlus && this.angle >= 180));
 	if( (newAngle > this.angle && newAngle <= this.angle + 180) || (newAngle >= 0 && newAngle <= anglePlus && this.angle >= 180) )
 		intervalFunc = function() {
 			this.angle %= 360;
