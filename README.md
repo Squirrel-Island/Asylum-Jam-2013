@@ -1,6 +1,5 @@
 Sonny Jim - Adventure Through Hyde Park
 ===============
--------------------------------------
 Releases
  - First full and stable [release](https://github.com/robwhitaker/Asylum-Jam-2013/releases/tag/1.0)
 
