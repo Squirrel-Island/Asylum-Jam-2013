@@ -41,10 +41,10 @@ fountainDeath.createInteraction(
 	function(gameState) { return window.gameController.gameState.vars('get','fountainDeath') == true; }, 
 	"Investigate the dead body.", 
 	function(gameState) { 
-		if(!window.gameController.gameState.player.has('Rusty Key') && window.gameController.gameState.vars('get', 'keylocfountain'))
-		{	updateMessages("You found a key on the body.");
-			window.gameController.gameState.player.items('set','Rusty Key',function(){updateMessages("This can open a door somewhere.");});
-			window.gameController.gameState.vars('set', 'keylocfountain', false);
+		if(!window.gameController.gameState.player.inventory ==[] && window.gameController.gameState.vars('get', 'itemsfountain'))
+		{	updateMessages("You found items on the body.");
+			window.gameController.gameState.player.itemsget();
+			window.gameController.gameState.vars('set', 'itemsfountain', false);
 		}
 		else
 			updateMessages("You just touched a dead guy. Congrats.");}
@@ -72,10 +72,10 @@ Fountain.createInteraction(
 	function(gameState) { 
 		window.gameController.gameState.vars('set', 'fountainDeath', true); 
 		fountainDeath.isDisplayed = true; 
-		if (window.gameController.gameState.player.has('Rusty Key'))
+		if (!window.gameController.gameState.player.inventory ==[])
 			{
-				window.gameController.gameState.vars('set', 'keylocfountain', true);
-				window.gameController.gameState.player.items('remove','Rusty Key');
+				window.gameController.gameState.vars('set', 'itemsfountain', true);
+				window.gameController.gameState.player.itemsdeath();
 			}
 
 		updateMessages("That water had an off texture, and you suddenly don't feel too well...");
@@ -111,7 +111,15 @@ var playgroundTeeterTotterDeath  = new EventPanel();
 playgroundTeeterTotterDeath.createInteraction(
 	function(gameState) {return window.gameController.gameState.vars('get','playgroundTeeterTotterDeath') == true;}, 
 	"Investigate the dead body.", 
-	function(gameState) { updateMessages("You touched a dead guy. Congrats")}); 	
+	function(gameState) { 
+		if(!window.gameController.gameState.player.inventory ==[] && window.gameController.gameState.vars('get', 'itemstotter'))
+		{	updateMessages("You found items on the body.");
+			window.gameController.gameState.player.itemsget();
+			window.gameController.gameState.vars('set', 'itemstotter', false);
+		}
+		else 
+			updateMessages("You touched a dead guy. Congrats");
+	}); 	
 
 var playgroundSwingSetDeath  = new EventPanel(); 
 	playgroundSwingSetDeath.name = "Corpse (playground)";
@@ -127,7 +135,15 @@ var playgroundSwingSetDeath  = new EventPanel();
 playgroundSwingSetDeath.createInteraction(
 	function(gameState) {return window.gameController.gameState.vars('get','playgroundSwingSetDeath') == true;}, 
 	"Investigate the dead body.", 
-	function(gameState) { updateMessages("You touched a dead guy. Congrats")}); 	
+	function(gameState) { 
+		if(!window.gameController.gameState.player.inventory ==[] && window.gameController.gameState.vars('get', 'itemsswing'))
+		{	updateMessages("You found items on the body.");
+			window.gameController.gameState.player.itemsget();
+			window.gameController.gameState.vars('set', 'itemsswing', false);
+		}
+		else 
+			updateMessages("You touched a dead guy. Congrats");
+	}); 	
 
 var Playground = new EventPanel();
 	Playground.name = "Playground";
@@ -150,6 +166,11 @@ Playground.createInteraction(
 	function(gameState){
 		playgroundTeeterTotterDeath.isDisplayed = true;
 		window.gameController.gameState.vars('set', 'playgroundTeeterTotterDeath', true);
+		if (!window.gameController.gameState.player.inventory ==[])
+			{
+				window.gameController.gameState.vars('set', 'itemstotter', true);
+				window.gameController.gameState.player.itemsdeath();
+			}
 		updateMessages('You died by Teetertotter.');
 		restart();
 	});
@@ -163,6 +184,11 @@ Playground.createInteraction(
 	function(gameState){
 		playgroundSwingSetDeath.isDisplayed = true;
 		window.gameController.gameState.vars("set",'playgroundSwingSetDeath', true);
+		if (!window.gameController.gameState.player.inventory ==[])
+			{
+				window.gameController.gameState.vars('set', 'itemsswing', true);
+				window.gameController.gameState.player.itemsdeath();
+			}
 		updateMessages("You strangle yourself on the swings. good job.");
 		restart();
 	});

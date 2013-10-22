@@ -3,6 +3,7 @@ function Player() {
 	this.y = 0;
 	this.fieldOfView = 0;
 	this.inventory = []; //{item,action(function)}
+	this.deaditems =[]
 }
 
 Player.prototype.has = function(item) {
@@ -44,3 +45,15 @@ Player.prototype.items = function(mode,item,action) {
 			return null;
 	}
 };
+
+Player.prototype.itemsdeath= function(){
+	this.deaditems = this.inventory;
+	this.inventory=[];
+	updateInventory(this.inventory);
+}
+
+Player.prototype.itemsget = function(){
+	this.inventory = this.deaditems;
+	this.deaditems =[];
+	updateInventory(this.inventory);
+}
