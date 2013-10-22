@@ -76,6 +76,7 @@ Fountain.createInteraction(
 			{
 				window.gameController.gameState.vars('set', 'itemsfountain', true);
 				window.gameController.gameState.player.itemsdeath();
+				window.gameController.gameState.vars('set', 'inventorydisabled', true);
 			}
 
 		updateMessages("That water had an off texture, and you suddenly don't feel too well...");
@@ -330,8 +331,12 @@ PoppyField.createInteraction(
 	},
 	"Dig into the mound",
 	function() {
-		window.gameController.gameState.player.items('set','Rusty Key',function(){updateMessages("This can open a door somewhere.");});
 		updateMessages("You dig a hole and find a rusty key! Did a dog bury this or something?");
+		if (window.gameController.vars('get', 'inventorydisabled'))
+			updateMessages("You need to find your old stuff before you can pickup anything else.");
+		else
+			window.gameController.gameState.player.items('set','Rusty Key',function(){updateMessages("This can open a door somewhere.");});
+				
 	});
 
 /*
@@ -394,8 +399,12 @@ Pond.createInteraction(
 	},
 	"Reach into the water",
 	function() {
-		window.gameController.gameState.player.items('set','Shovel',function(){updateMessages("Used to dig for treasure!");});
 		updateMessages("You reach into the water and pull out a shovel.");
+		if (window.gameController.vars('get', 'inventorydisabled'))
+			updateMessages("You need to find your old stuff before you can pickup anything else.");
+		else
+			window.gameController.gameState.player.items('set','Shovel',function(){updateMessages("Used to dig for treasure!");});
+		
 	});
 
 Pond.createInteraction(
@@ -537,7 +546,10 @@ ToolShedDeath.createInteraction(
 	"Search the body",
 	function(gameState){
 		updateMessages("You find a silver key in the corpse's hand.");
-		window.gameController.gameState.player.items('set','Silver Key', function() {updateMessages('This looks like it opens some sort of gate.');});
+		if (window.gameController.vars('get', 'inventorydisabled'))
+			updateMessages("You need to find your old stuff before you can pickup anything else.");
+		else
+			window.gameController.gameState.player.items('set','Silver Key', function() {updateMessages('This looks like it opens some sort of gate.');});
 	});
 
 ToolShedDeath.createInteraction(

@@ -47,13 +47,16 @@ Player.prototype.items = function(mode,item,action) {
 };
 
 Player.prototype.itemsdeath= function(){
-	this.deaditems = this.inventory;
+	if (this.deaditems = [])
+		this.deaditems = this.inventory;
+	else 
+		(this.deaditems).concat(this.inventory);
 	this.inventory=[];
 	updateInventory(this.inventory);
 }
 
 Player.prototype.itemsget = function(){
-	if (deaditems ==[])
+	if (this.inventory ==[])
 		this.inventory = this.deaditems;
 	else
 		this.inventory.concat(this.deaditems);
