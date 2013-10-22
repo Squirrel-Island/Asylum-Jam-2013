@@ -56,13 +56,13 @@ function updateCompasses(e) {
 
   var arr = window.gameController.inSight;
   var updateArea = document.getElementById('compassContainer');
-  updateArea.innerHTML = "";
+  updateArea.innerHTML = "<h4>Locations</h4>";
 
   for(var iii=0; iii<arr.length; iii++) {
     var e = arr[iii]['event'];
 
     var outerDiv = document.createElement("div");
-    outerDiv.setAttribute("class", "animated fadeInDown compassBlock");
+    outerDiv.setAttribute("class", "animated fadeInRight compassBlock");
 
     var innerDiv = document.createElement("div");
     innerDiv.setAttribute("class", "compass");
