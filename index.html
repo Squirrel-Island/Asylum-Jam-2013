@@ -1,61 +1,64 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Asylum Jam Horror Game - Sonny Jim</title>
-<link rel="stylesheet" href="styles/style.css" />
-<link rel="stylesheet" href="vendor/animate.css/animate.css"/>
+  <meta charset="utf-8">
 
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
-<script type="text/javascript" src="vendor/jQueryRotateCompressed.js"></script>
-
-<script type="text/javascript" src="scripts/Compass.js"></script>
-<script type="text/javascript" src="scripts/interfaceUpdate.js"></script>
-<script type="text/javascript" src="scripts/EventPanel.js"></script>
-<script type="text/javascript" src="scripts/Player.js"></script>
-<script type="text/javascript" src="scripts/Game.js"></script>
-<script type="text/javascript" src="scripts/GameController.js"></script>
-<script type="text/javascript" src="scripts/init.js"></script>
-<script type="text/javascript" src="scripts/Movement.js"></script>
-<script type="text/javascript" src="scripts/EventPanels.js"></script>
+  <title>Asylum Jam Horror Game - Sonny Jim</title>
+  <link href="styles/style.css" rel="stylesheet">
+  <link href="vendor/animate.css/animate.css" rel="stylesheet">
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'
+  type='text/javascript'></script>
+  <script src="vendor/jQueryRotateCompressed.js" type="text/javascript"></script>
+  <script src="scripts/Compass.js" type="text/javascript"></script>
+  <script src="scripts/interfaceUpdate.js" type="text/javascript"></script>
+  <script src="scripts/EventPanel.js" type="text/javascript"></script>
+  <script src="scripts/Player.js" type="text/javascript"></script>
+  <script src="scripts/Game.js" type="text/javascript"></script>
+  <script src="scripts/GameController.js" type="text/javascript"></script>
+  <script src="scripts/init.js" type="text/javascript"></script>
+  <script src="scripts/Movement.js" type="text/javascript"></script>
+  <script src="scripts/EventPanels.js" type="text/javascript"></script>
 </head>
+
 <body>
-<div id="coord"></div>
-<div id="container">
-	<h2 class="header">Asylum Jam - Sonny Jim</h2>
-	<div id="game">
-		<div class="centerContent">
-			<div id="textArea">
+  <div id="coord"></div>
 
-        <p class="animated fadeInDown">
-          Welcome to Hyde Park. You can move by holding the WASD keys. Enjoy.
-        </p>
-          
+  <div id="container">
+    <h2 class="header">Asylum Jam - Sonny Jim</h2>
+
+    <div id="game">
+      <div class="centerContent">
+        <div id="textArea">
+          <p class="animated fadeInDown">Welcome to Hyde Park. You can move by
+          holding the WASD keys. Enjoy.</p>
+        </div>
+
+        <div id="inventory">
+          <h4>Inventory</h4>
+
+          <ul id="inventoryList"></ul>
+
+          <div id="compassContainer">
+            <div class="compassBlock" data-compass-name="test">
+              <div class="compass"><img src="images/compassArrow.png"></div>
+
+              <h4>Compass Name</h4>
+            </div>
+
+            <div class="compassBlock" data-compass-name="test">
+              <div class="compass"><img src="images/compassArrow.png"></div>
+
+              <h4>Compass Name</h4>
+            </div>
+          </div>
+        </div>
       </div>
-			<div id="inventory">
-        		<h4>Inventory</h4>
-				<ul id="inventoryList">
-				</ul>
 
-				<div id="compassContainer">
-
-					<div class="compassBlock" data-compass-name="test">
-						<div class="compass"><img src="images/compassArrow.png" /></div>
-						<h4>Compass Name</h4>
-					</div>
-
-					<div class="compassBlock" data-compass-name="test">
-						<div class="compass"><img src="images/compassArrow.png" /></div>
-						<h4>Compass Name</h4>
-					</div>
-					
-				</div>
-
-			</div>
-		</div>
-		<div id="inputField">
-			<ul id="interactions"></ul>
-		</div>
-</div>
+      <div id="inputField">
+        <ul id="interactions"></ul>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
