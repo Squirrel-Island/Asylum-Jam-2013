@@ -41,7 +41,13 @@ fountainDeath.createInteraction(
 	function(gameState) { return window.gameController.gameState.vars('get','fountainDeath') == true; }, 
 	"Investigate the dead body.", 
 	function(gameState) { 
-		updateMessages("You just touched a dead guy. Congrats.");}
+		if(!window.gameController.gameState.player.has('Rusty Key') && window.gameController.gameState.vars('get', 'keylocfountain'))
+		{	updateMessages("You found a key on the body.");
+			window.gameController.gameState.player.items('set','Rusty Key',function(){updateMessages("This can open a door somewhere.");});
+			window.gameController.gameState.vars('set', 'keylocfountain', false);
+		}
+		else
+			updateMessages("You just touched a dead guy. Congrats.");}
 	); 
 
 
@@ -66,7 +72,13 @@ Fountain.createInteraction(
 	function(gameState) { 
 		window.gameController.gameState.vars('set', 'fountainDeath', true); 
 		fountainDeath.isDisplayed = true; 
-		updateMessages("You dead.");
+		if (window.gameController.gameState.player.has('Rusty Key'))
+			{
+				window.gameController.gameState.vars('set', 'keylocfountain', true);
+				window.gameController.gameState.player.items('remove','Rusty Key');
+			}
+
+		updateMessages("That water had an off texture, and you suddenly don't feel too well...");
 		restart();
 	}); 
 	
