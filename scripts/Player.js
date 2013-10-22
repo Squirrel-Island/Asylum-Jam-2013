@@ -46,20 +46,29 @@ Player.prototype.items = function(mode,item,action) {
 	}
 };
 
-Player.prototype.itemsdeath= function(){
+Player.prototype.itemsdeath= function(location){
 	if (this.deaditems = [])
-		this.deaditems = this.inventory;
+		this.deaditems = this.inventory.unshift(location);
 	else 
-		(this.deaditems).concat(this.inventory);
+		deaditems.push(this.inventory.unshift(location))
 	this.inventory=[];
 	updateInventory(this.inventory);
 }
 
-Player.prototype.itemsget = function(){
-	if (this.inventory ==[])
-		this.inventory = this.deaditems;
-	else
-		this.inventory.concat(this.deaditems);
-	this.deaditems =[];
+Player.prototype.itemsget = function(location){
+	var tempitems = [];
+	for (var i =0; i < this.deaditems.length; i++)
+		{
+			if (this.deaditems[i][0] == location)
+			{	tempitems = this.deaditems[i].slice(1, this.deaditems[i].length);
+				this.deaditems =[];
+				if (this.inventory ==[])
+					this.inventory = tempitems;
+				else
+					this.inventory.concat(tempitems);
+			}
+
+		}
+
 	updateInventory(this.inventory);
 }

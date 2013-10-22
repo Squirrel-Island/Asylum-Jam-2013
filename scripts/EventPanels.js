@@ -43,7 +43,7 @@ fountainDeath.createInteraction(
 	function(gameState) { 
 		if(!window.gameController.gameState.player.deaditems ==[] && window.gameController.gameState.vars('get', 'itemsfountain'))
 		{	updateMessages("You found items on the body.");
-			window.gameController.gameState.player.itemsget();
+			window.gameController.gameState.player.itemsget('fountain');
 			window.gameController.gameState.vars('set', 'itemsfountain', false);
 		}
 		else
@@ -75,10 +75,8 @@ Fountain.createInteraction(
 		if (!window.gameController.gameState.player.inventory ==[])
 			{
 				window.gameController.gameState.vars('set', 'itemsfountain', true);
-				window.gameController.gameState.player.itemsdeath();
-				window.gameController.gameState.vars('set', 'inventorydisabled', true);
+				window.gameController.gameState.player.itemsdeath('fountain');
 			}
-
 		updateMessages("That water had an off texture, and you suddenly don't feel too well...");
 		restart();
 	}); 
@@ -332,9 +330,6 @@ PoppyField.createInteraction(
 	"Dig into the mound",
 	function() {
 		updateMessages("You dig a hole and find a rusty key! Did a dog bury this or something?");
-		if (window.gameController.vars('get', 'inventorydisabled'))
-			updateMessages("You need to find your old stuff before you can pickup anything else.");
-		else
 			window.gameController.gameState.player.items('set','Rusty Key',function(){updateMessages("This can open a door somewhere.");});
 				
 	});
@@ -400,9 +395,6 @@ Pond.createInteraction(
 	"Reach into the water",
 	function() {
 		updateMessages("You reach into the water and pull out a shovel.");
-		if (window.gameController.vars('get', 'inventorydisabled'))
-			updateMessages("You need to find your old stuff before you can pickup anything else.");
-		else
 			window.gameController.gameState.player.items('set','Shovel',function(){updateMessages("Used to dig for treasure!");});
 		
 	});
@@ -546,9 +538,6 @@ ToolShedDeath.createInteraction(
 	"Search the body",
 	function(gameState){
 		updateMessages("You find a silver key in the corpse's hand.");
-		if (window.gameController.vars('get', 'inventorydisabled'))
-			updateMessages("You need to find your old stuff before you can pickup anything else.");
-		else
 			window.gameController.gameState.player.items('set','Silver Key', function() {updateMessages('This looks like it opens some sort of gate.');});
 	});
 
