@@ -90,7 +90,7 @@ GameController.prototype.update = function() {
 	for(var iii=0; iii<this.inSight.length; iii++)
 		if(canSee.indexOf(this.inSight[iii]) < 0) {
 			this.inSight.splice(iii,1);
-			//updateCompasses();
+			updateCompasses(this.inSight);
 		}
 
 	//COLLISION CHECKS

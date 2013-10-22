@@ -6,7 +6,19 @@ function Compass(element) {
 	this.interval = null;
 }
 
+Compass.images = {
+	"default":"images/compassArrow2.png",
+	"onPanel":"images/compassArrow2-OnPanel.png",
+	"onPoint":"images/compassArrow2-OnPoint.png"
+};
+
 Compass.prototype.point = function(degrees)  {
+
+	if(isNaN(degrees))
+		this.element.src = Compass.images["onPoint"];
+	else
+		this.element.src = Compass.images["default"];
+
 	clearInterval(this.interval);
 	this.interval = null;
 	this.angle %= 360;

@@ -56,7 +56,7 @@ function updateCompasses(e) {
 
   var arr = window.gameController.inSight;
   var updateArea = document.getElementById('compassContainer');
-  updateArea.innerHTML = "<h4>Locations</h4>";
+  updateArea.innerHTML = "";
 
   for(var iii=0; iii<arr.length; iii++) {
     var e = arr[iii]['event'];
@@ -68,7 +68,7 @@ function updateCompasses(e) {
     innerDiv.setAttribute("class", "compass");
 
     var arrow = document.createElement("img");
-    arrow.src = "images/compassArrow.png";
+    arrow.src = "images/compassArrow2.png";
 
     window.gameController.addCompass(new Compass(arrow),e);
 
