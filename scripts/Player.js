@@ -53,7 +53,10 @@ Player.prototype.itemsdeath= function(){
 }
 
 Player.prototype.itemsget = function(){
-	this.inventory = this.deaditems;
+	if (deaditems ==[])
+		this.inventory = this.deaditems;
+	else
+		this.inventory.concat(this.deaditems);
 	this.deaditems =[];
 	updateInventory(this.inventory);
 }

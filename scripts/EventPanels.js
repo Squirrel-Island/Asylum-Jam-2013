@@ -41,7 +41,7 @@ fountainDeath.createInteraction(
 	function(gameState) { return window.gameController.gameState.vars('get','fountainDeath') == true; }, 
 	"Investigate the dead body.", 
 	function(gameState) { 
-		if(!window.gameController.gameState.player.inventory ==[] && window.gameController.gameState.vars('get', 'itemsfountain'))
+		if(!window.gameController.gameState.player.deaditems ==[] && window.gameController.gameState.vars('get', 'itemsfountain'))
 		{	updateMessages("You found items on the body.");
 			window.gameController.gameState.player.itemsget();
 			window.gameController.gameState.vars('set', 'itemsfountain', false);
@@ -112,7 +112,7 @@ playgroundTeeterTotterDeath.createInteraction(
 	function(gameState) {return window.gameController.gameState.vars('get','playgroundTeeterTotterDeath') == true;}, 
 	"Investigate the dead body.", 
 	function(gameState) { 
-		if(!window.gameController.gameState.player.inventory ==[] && window.gameController.gameState.vars('get', 'itemstotter'))
+		if(!window.gameController.gameState.player.deaditems ==[] && window.gameController.gameState.vars('get', 'itemstotter'))
 		{	updateMessages("You found items on the body.");
 			window.gameController.gameState.player.itemsget();
 			window.gameController.gameState.vars('set', 'itemstotter', false);
@@ -136,7 +136,7 @@ playgroundSwingSetDeath.createInteraction(
 	function(gameState) {return window.gameController.gameState.vars('get','playgroundSwingSetDeath') == true;}, 
 	"Investigate the dead body.", 
 	function(gameState) { 
-		if(!window.gameController.gameState.player.inventory ==[] && window.gameController.gameState.vars('get', 'itemsswing'))
+		if(!window.gameController.gameState.player.deaditems ==[] && window.gameController.gameState.vars('get', 'itemsswing'))
 		{	updateMessages("You found items on the body.");
 			window.gameController.gameState.player.itemsget();
 			window.gameController.gameState.vars('set', 'itemsswing', false);
@@ -228,9 +228,15 @@ DogDeath.createInteraction(
 			return true;
 	},
 	"Investigate mauled body.",
-	function(gameState){
-		updateMessages("Now you smell like dog. weird.");
-	});
+	function(gameState) { 
+		if(!window.gameController.gameState.player.deaditems ==[] && window.gameController.gameState.vars('get', 'itemsdog'))
+		{	updateMessages("You found items on the body.");
+			window.gameController.gameState.player.itemsget();
+			window.gameController.gameState.vars('set', 'itemsdog', false);
+		}
+		else 
+			updateMessages("Now you smell like dog. weird.");
+	}); 	
 var Dog = new EventPanel();
 	Dog.name = "Dog";
 	Dog.x = 1;
