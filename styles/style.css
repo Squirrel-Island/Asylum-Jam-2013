@@ -57,9 +57,30 @@ ul {
 */
 .centerContent {
     padding-left: 20px;
-/*  background-color: #000;
-    padding-right: 10px;
-    border: 1px dotted #fff; */
+    height: 610px;
+    overflow: hidden;
+}
+
+.compass {
+  height: 65px;
+  width: 65px;
+  margin:0px;
+  padding:0px;
+  background-image: url('../images/compassBG.png');
+}
+
+.compassBlock {
+  width: 65px;
+  padding: 0px;
+  margin: 0px 0px 1em 0px;
+}
+
+.compassBlock h4 {
+  margin: 5px 0 0 0;
+  padding: 0px;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
 }
 
 .fadeBlock {
@@ -91,8 +112,11 @@ ul {
 /*
   IDs
 */
+#compassContainer {
+  display: block;
+}
+
 #container {
-/*  background-color: #333;*/
 	height: 100%;
 	margin: 0 auto;
 	width: 1000px;
@@ -106,31 +130,26 @@ ul {
   background-color: #000;
 }
 
-#interations {
-}
-
-/*#inputField input {
-	width: 995px;
-	border: none;
-	margin: 0px;
-	background-color: #555;
-	padding: 5px 0px 5px 10px;
-}*/
-
 #inventory {
 	display: inline-block;
-	/*background-color: #333333;*/
+}
+
+#sidebar {
 	margin: 0px;
   float: right;
   width: 120px;
 }
 
+#inventoryList {
+  height: 150px;
+  display: block;
+  overflow-y: scroll;
+}
+
 #textArea {
 	display: inline-block;
-	/*background-color: #aaa;*/
 	margin: 0px;
   padding-top: 20px;
-	height: 100%;
   width: 750px;
 }
 

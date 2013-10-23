@@ -27,6 +27,7 @@ function endGame() {
 *	Fountain && Fountain Death
 */
 var fountainDeath = new EventPanel();
+fountainDeath.name = "Corpse (fountain)";
 fountainDeath.x = 10;
 fountainDeath.y = 10;
 fountainDeath.width = 2;
@@ -45,6 +46,7 @@ fountainDeath.createInteraction(
 
 
 var Fountain = new EventPanel();
+	Fountain.name = "Fountain";
 	Fountain.x = 10;
 	Fountain.y = 10;
 	Fountain.width = 2;
@@ -83,7 +85,8 @@ Fountain.createInteraction(
 *	Playground Death and Playground
 */
 
-var playgroundTeeterTotterDeath  = new EventPanel(); 
+var playgroundTeeterTotterDeath  = new EventPanel();
+	playgroundTeeterTotterDeath.name = "Corpse (playground)";
 	playgroundTeeterTotterDeath.x = 4;
 	playgroundTeeterTotterDeath.y = 3;
 	playgroundTeeterTotterDeath.width = 2;
@@ -99,6 +102,7 @@ playgroundTeeterTotterDeath.createInteraction(
 	function(gameState) { updateMessages("You touched a dead guy. Congrats")}); 	
 
 var playgroundSwingSetDeath  = new EventPanel(); 
+	playgroundSwingSetDeath.name = "Corpse (playground)";
 	playgroundSwingSetDeath.x = 4;
 	playgroundSwingSetDeath.y = 3;
 	playgroundSwingSetDeath.width = 2;
@@ -114,6 +118,7 @@ playgroundSwingSetDeath.createInteraction(
 	function(gameState) { updateMessages("You touched a dead guy. Congrats")}); 	
 
 var Playground = new EventPanel();
+	Playground.name = "Playground";
 	Playground.x = 4;
 	Playground.y = 3;
 	Playground.width = 2;
@@ -168,6 +173,7 @@ Playground.createInteraction(
 */
 
 var DogDeath = new EventPanel(); 
+	DogDeath.name = "Corpse (dog)";
 	DogDeath.x = 1;
 	DogDeath.y = 9;
 	DogDeath.width = 2;
@@ -188,6 +194,7 @@ DogDeath.createInteraction(
 		updateMessages("Now you smell like dog. weird.");
 	});
 var Dog = new EventPanel();
+	Dog.name = "Dog";
 	Dog.x = 1;
 	Dog.y = 9;
 	Dog.width = 2;
@@ -228,6 +235,7 @@ Dog.createInteraction(
 */
 
 var PoppyFieldDeath = new EventPanel();
+	PoppyFieldDeath.name = "Corpse (field)";
 	PoppyFieldDeath.x = 17;
 	PoppyFieldDeath.y = 15;
 	PoppyFieldDeath.width = 2;
@@ -250,6 +258,7 @@ PoppyFieldDeath.createInteraction(
 	});
 
 var PoppyField = new EventPanel();
+	PoppyField.name = "Poppy Field";
 	PoppyField.x = 17;
 	PoppyField.y = 15;
 	PoppyField.width = 2;
@@ -290,6 +299,7 @@ PoppyField.createInteraction(
 */
 
 var PondDeath = new EventPanel();
+	PondDeath.name = "Bloated Corpse";
 	PondDeath.x = 13;
 	PondDeath.y = 17;
 	PondDeath.width = 2;
@@ -312,6 +322,7 @@ PondDeath.createInteraction(
 	});
 
 var Pond= new EventPanel();
+	Pond.name = "Pond";
 	Pond.x = 13;
 	Pond.y = 17;
 	Pond.width = 2;
@@ -370,6 +381,7 @@ Pond.createInteraction(
 */
 
 var MudDeath = new EventPanel();
+	MudDeath.name = "Muddy Corpse";
 	MudDeath.x = 6;
 	MudDeath.y = 14;
 	MudDeath.width =2;
@@ -393,6 +405,7 @@ MudDeath.createInteraction(
 	});
 
 var Mud = new EventPanel();
+	Mud.name = "Mud";
 	Mud.x = 6;
 	Mud.y = 14;
 	Mud.width =2;
@@ -429,6 +442,7 @@ Mud.createInteraction(
 */
 
 var ToolShed = new EventPanel();
+	ToolShed.name = "Tool Shed";
 	ToolShed.x = 0;
 	ToolShed.y = 20;
 	ToolShed.width = 2;
@@ -462,6 +476,7 @@ ToolShed.createInteraction(
 	});
 
 var ToolShedDeath = new EventPanel();
+	ToolShedDeath.name = "Crushed Corpse";
 	ToolShedDeath.x = 0;
 	ToolShedDeath.y = 20;
 	ToolShedDeath.width = 2;
@@ -491,6 +506,7 @@ ToolShedDeath.createInteraction(
 	});
 
 var SilverGate = new EventPanel();
+	SilverGate.name = "Silver Gate";
 	SilverGate.x = 0;
 	SilverGate.y = 2;
 	SilverGate.width = 2;
