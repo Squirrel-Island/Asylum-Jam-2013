@@ -61,6 +61,28 @@ ul {
     overflow: hidden;
 }
 
+.compass {
+  height: 65px;
+  width: 65px;
+  margin:0px;
+  padding:0px;
+  background-image: url('../images/compassBG.png');
+}
+
+.compassBlock {
+  width: 65px;
+  padding: 0px;
+  margin: 0px 0px 1em 0px;
+}
+
+.compassBlock h4 {
+  margin: 5px 0 0 0;
+  padding: 0px;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+}
+
 .fadeBlock {
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
@@ -90,6 +112,10 @@ ul {
 /*
   IDs
 */
+#compassContainer {
+  display: block;
+}
+
 #container {
 	height: 100%;
 	margin: 0 auto;
@@ -106,10 +132,18 @@ ul {
 
 #inventory {
 	display: inline-block;
-	/*background-color: #333333;*/
+}
+
+#sidebar {
 	margin: 0px;
   float: right;
   width: 120px;
+}
+
+#inventoryList {
+  height: 150px;
+  display: block;
+  overflow-y: scroll;
 }
 
 #textArea {

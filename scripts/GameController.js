@@ -3,6 +3,7 @@ function GameController() {
 	this.movementSpeed = 0;
 	this.inSight = [];
 	this.inContact = [];
+	this.compasses = [];
 }
 
 GameController.prototype.checkCollision = function() {
@@ -81,13 +82,16 @@ GameController.prototype.update = function() {
 		if(this.inSight.indexOf(canSee[iii]) < 0) {
 			updateMessages(canSee[iii]['event'].visibleText); 
 			this.inSight.push(canSee[iii]);
+			updateCompasses(canSee[iii]);
 		}
 	}
 
 	//if it is in the this.inSight array, but not in sight, remove it from the array
 	for(var iii=0; iii<this.inSight.length; iii++)
-		if(canSee.indexOf(this.inSight[iii]) < 0)
+		if(canSee.indexOf(this.inSight[iii]) < 0) {
 			this.inSight.splice(iii,1);
+			updateCompasses(this.inSight);
+		}
 
 	//COLLISION CHECKS
 	var walkingOn = this.checkCollision();
@@ -108,6 +112,17 @@ GameController.prototype.update = function() {
 			this.inContact.splice(iii,1);
 			this.displayInteractions();							//display current interaction options
 		}
+
+	for(var iii=0; iii<this.compasses.length; iii++) {
+		var eventCenterX = this.compasses[iii]['event'].x + this.compasses[iii]['event'].width/2;
+		var eventCenterY = this.compasses[iii]['event'].y - this.compasses[iii]['event'].height/2;
+
+		var x = eventCenterX - this.gameState.player.x;
+		var y = eventCenterY - this.gameState.player.y; 
+
+		//console.log(this.compasses[iii]['event'].name +" "+x +","+y);
+		this.compasses[iii]['compass'].point(Compass.getAngle(x,y));
+	}
 };
 
 GameController.prototype.runEvents = function(e) {
@@ -137,4 +152,11 @@ GameController.prototype.displayInteractions = function() {
 					});
 
 	updateInteractions(possibleInteractions); 
+};
+
+GameController.prototype.addCompass = function(compass,panel) {
+	this.compasses.push({
+		"compass": compass,
+		"event": panel
+	});
 };
