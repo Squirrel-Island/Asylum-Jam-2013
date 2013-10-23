@@ -143,7 +143,7 @@ ul {
 #inventoryList {
   height: 150px;
   display: block;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #textArea {
