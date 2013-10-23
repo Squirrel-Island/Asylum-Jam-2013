@@ -62,7 +62,7 @@ function updateCompasses(e) {
     var e = arr[iii]['event'];
 
     var outerDiv = document.createElement("div");
-    outerDiv.setAttribute("class", "animated fadeInRight compassBlock");
+    outerDiv.setAttribute("class", "animated fadeIn compassBlock");
 
     var innerDiv = document.createElement("div");
     innerDiv.setAttribute("class", "compass");
